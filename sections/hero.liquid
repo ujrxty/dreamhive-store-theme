@@ -14,7 +14,7 @@
            width="{{ section.settings.image.width }}"
            height="{{ section.settings.image.height }}">
     {%- else -%}
-      <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a1310,#0E0E10);"></div>
+      <img src="{{ 'hero-luxury-living.jpg' | asset_url }}" alt="" loading="eager" fetchpriority="high" width="2000" height="1333" style="width:100%;height:100%;object-fit:cover;">
     {%- endif -%}
   </div>
   <div class="hero__overlay" style="background: linear-gradient(180deg, rgba(0,0,0,{{ section.settings.overlay_top | divided_by: 100.0 }}) 0%, rgba(0,0,0,{{ section.settings.overlay_bottom | divided_by: 100.0 }}) 100%);"></div>

@@ -12,13 +12,15 @@
       {%- for block in section.blocks -%}
         {%- assign coll = collections[block.settings.collection] -%}
         {%- assign image = block.settings.image | default: coll.image | default: coll.products.first.featured_image -%}
-        <a href="{{ coll.url | default: block.settings.link }}" class="category-tile" {{ block.shopify_attributes }}>
+        <a href="{{ coll.url | default: block.settings.link | default: '#' }}" class="category-tile" {{ block.shopify_attributes }}>
           {%- if image -%}
             <img src="{{ image | image_url: width: 900 }}"
                  srcset="{{ image | image_url: width: 500 }} 500w, {{ image | image_url: width: 900 }} 900w"
                  sizes="(min-width: 990px) 33vw, 100vw"
                  alt="{{ block.settings.label | escape }}"
                  loading="lazy" width="900" height="1125">
+          {%- elsif block.settings.fallback_asset != blank -%}
+            <img src="{{ block.settings.fallback_asset | asset_url }}" alt="{{ block.settings.label | escape }}" loading="lazy" width="900" height="1125" style="width:100%;height:100%;object-fit:cover;">
           {%- else -%}
             <div style="width:100%;height:100%;background:var(--color-surface);"></div>
           {%- endif -%}
@@ -54,7 +56,8 @@
         { "type": "text", "id": "label", "label": "Label", "default": "Living" },
         { "type": "collection", "id": "collection", "label": "Collection" },
         { "type": "url", "id": "link", "label": "Link (if no collection)" },
-        { "type": "image_picker", "id": "image", "label": "Image (overrides collection image)" }
+        { "type": "image_picker", "id": "image", "label": "Image (overrides collection image)" },
+        { "type": "text", "id": "fallback_asset", "label": "Fallback asset (dev only)", "info": "Bundled placeholder used until you upload an Image or connect a Collection with an image.", "default": "cat-living.jpg" }
       ]
     }
   ],
@@ -62,9 +65,9 @@
     {
       "name": "Category tiles",
       "blocks": [
-        { "type": "tile", "settings": { "label": "Living" } },
-        { "type": "tile", "settings": { "label": "Bedroom" } },
-        { "type": "tile", "settings": { "label": "Dining" } }
+        { "type": "tile", "settings": { "label": "Living", "fallback_asset": "cat-living.jpg" } },
+        { "type": "tile", "settings": { "label": "Bedroom", "fallback_asset": "cat-bedroom.jpg" } },
+        { "type": "tile", "settings": { "label": "Dining", "fallback_asset": "cat-dining.jpg" } }
       ]
     }
   ]

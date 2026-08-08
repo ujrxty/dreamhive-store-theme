@@ -33,9 +33,9 @@
         "columns": 3
       },
       "blocks": {
-        "t1": { "type": "tile", "settings": { "label": "Living room" } },
-        "t2": { "type": "tile", "settings": { "label": "Bedroom" } },
-        "t3": { "type": "tile", "settings": { "label": "Dining" } }
+        "t1": { "type": "tile", "settings": { "label": "Living room", "fallback_asset": "cat-living.jpg" } },
+        "t2": { "type": "tile", "settings": { "label": "Bedroom", "fallback_asset": "cat-bedroom.jpg" } },
+        "t3": { "type": "tile", "settings": { "label": "Dining", "fallback_asset": "cat-dining.jpg" } }
       },
       "block_order": ["t1", "t2", "t3"]
     },
@@ -99,10 +99,10 @@
         "columns": 4
       },
       "blocks": {
-        "l1": { "type": "photo" },
-        "l2": { "type": "photo" },
-        "l3": { "type": "photo" },
-        "l4": { "type": "photo" }
+        "l1": { "type": "photo", "settings": { "fallback_asset": "look-1.jpg" } },
+        "l2": { "type": "photo", "settings": { "fallback_asset": "look-2.jpg" } },
+        "l3": { "type": "photo", "settings": { "fallback_asset": "look-3.jpg" } },
+        "l4": { "type": "photo", "settings": { "fallback_asset": "look-4.jpg" } }
       },
       "block_order": ["l1", "l2", "l3", "l4"]
     },
