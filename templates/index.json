@@ -6,59 +6,62 @@
         "use_default_video": true,
         "min_height": 95,
         "enable_parallax": true,
-        "overlay_top": 25,
-        "overlay_bottom": 55,
-        "eyebrow": "Autumn / Winter",
-        "heading": "Live beautifully",
+        "overlay_top": 30,
+        "overlay_bottom": 60,
+        "eyebrow": "The DreamHive Mattress",
+        "heading": "Sleep, reimagined.",
         "heading_style": "display-xxl",
-        "subheading": "Heirloom furniture for the way you live now. Free white-glove delivery on orders over $999.",
+        "subheading": "Engineered for deep, cooling, uninterrupted rest. Free shipping, 100-night trial, 10-year warranty.",
         "text_align": "center",
-        "button_1_text": "Shop the collection",
+        "button_1_text": "Shop mattresses",
         "button_1_link": "/collections/all",
-        "button_2_text": "Explore lookbook",
+        "button_2_text": "How it works",
         "show_scroll_hint": true,
         "scroll_hint_text": "Scroll"
       }
     },
     "marquee": {
       "type": "marquee",
-      "settings": { "speed": 40, "reverse": false },
+      "settings": { "speed": 55, "reverse": false },
       "blocks": {
-        "m1": { "type": "item", "settings": { "text": "Heirloom quality" } },
-        "m2": { "type": "item", "settings": { "text": "White-glove delivery" } },
+        "m1": { "type": "item", "settings": { "text": "100-night trial" } },
+        "m2": { "type": "item", "settings": { "text": "Free US shipping" } },
         "m3": { "type": "item", "settings": { "text": "10-year warranty" } },
-        "m4": { "type": "item", "settings": { "text": "Solid hardwood" } },
-        "m5": { "type": "item", "settings": { "text": "Made to last" } }
+        "m4": { "type": "item", "settings": { "text": "Ships in a box" } },
+        "m5": { "type": "item", "settings": { "text": "Cooling gel foam" } },
+        "m6": { "type": "item", "settings": { "text": "Made in the USA" } }
       },
-      "block_order": ["m1", "m2", "m3", "m4", "m5"]
+      "block_order": ["m1", "m2", "m3", "m4", "m5", "m6"]
     },
     "statement": {
       "type": "big-statement",
       "settings": {
         "eyebrow": "Our philosophy",
-        "text": "<p>We believe furniture should <em>outlive trends</em>. Every DreamHive piece is designed to be loved for a lifetime — and passed on.</p>",
+        "text": "<p>Sleep is not a luxury. It is the <em>foundation</em> of every good day. We built DreamHive to give you that foundation, night after night.</p>",
         "background": "default"
       }
     },
-    "editorial-grid": {
-      "type": "editorial-grid",
+    "sizes": {
+      "type": "size-grid",
       "settings": {
-        "eyebrow": "Shop by room",
-        "heading": "Live beautifully."
+        "eyebrow": "Every size",
+        "heading": "Fits your bed. And your budget.",
+        "subheading": "From dorm room to primary suite. All sizes ship free and arrive at your door in a box.",
+        "columns": 4
       },
       "blocks": {
-        "e1": { "type": "tile", "settings": { "label": "Living", "fallback_asset": "cat-living.jpg" } },
-        "e2": { "type": "tile", "settings": { "label": "Bedroom", "fallback_asset": "cat-bedroom.jpg" } },
-        "e3": { "type": "tile", "settings": { "label": "Craft", "fallback_asset": "editorial-craft.jpg" } },
-        "e4": { "type": "tile", "settings": { "label": "Dining", "fallback_asset": "cat-dining.jpg" } }
+        "s1": { "type": "size", "settings": { "name": "Twin", "dimensions": "38 x 75 in", "price": "From $795", "fallback_asset": "size-twin.jpg", "link": "/collections/all" } },
+        "s2": { "type": "size", "settings": { "name": "Queen", "dimensions": "60 x 80 in", "price": "From $1,295", "fallback_asset": "size-queen.jpg", "link": "/collections/all" } },
+        "s3": { "type": "size", "settings": { "name": "King", "dimensions": "76 x 80 in", "price": "From $1,595", "fallback_asset": "size-king.jpg", "link": "/collections/all" } },
+        "s4": { "type": "size", "settings": { "name": "Cal King", "dimensions": "72 x 84 in", "price": "From $1,595", "fallback_asset": "size-cal-king.jpg", "link": "/collections/all" } }
       },
-      "block_order": ["e1", "e2", "e3", "e4"]
+      "block_order": ["s1", "s2", "s3", "s4"]
     },
     "carousel": {
       "type": "product-carousel",
       "settings": {
-        "eyebrow": "Just landed",
-        "heading": "New this season",
+        "eyebrow": "Meet the range",
+        "heading": "Four mattresses. One promise.",
         "product_limit": 8,
         "background": "surface"
       }
@@ -66,72 +69,86 @@
     "numbered": {
       "type": "numbered-features",
       "settings": {
-        "eyebrow": "The DreamHive standard",
-        "heading": "Everything considered",
+        "eyebrow": "Built for real sleep",
+        "heading": "What is inside matters most.",
         "background": "default"
       },
       "blocks": {
-        "n1": { "type": "feature", "settings": { "title": "Solid hardwood frames", "description": "Kiln-dried oak and walnut, joined by hand with mortise-and-tenon construction." } },
-        "n2": { "type": "feature", "settings": { "title": "Full-grain leather", "description": "Sourced from Italian tanneries; ages with a patina that improves over decades." } },
-        "n3": { "type": "feature", "settings": { "title": "White-glove delivery", "description": "Two-person team, room-of-choice placement, assembly, and packaging removal." } },
-        "n4": { "type": "feature", "settings": { "title": "10-year warranty", "description": "On every frame and finish. We stand behind it because we made it to last." } }
+        "n1": { "type": "feature", "settings": { "title": "Cooling gel-infused memory foam", "description": "Draws heat away from your body so you stay cool through the night, even on the warmest evenings." } },
+        "n2": { "type": "feature", "settings": { "title": "Individually wrapped coils", "description": "Over 1,000 pocketed coils absorb motion, so your partner turning over will not wake you." } },
+        "n3": { "type": "feature", "settings": { "title": "Zoned lumbar support", "description": "Firmer support in the middle third of the mattress keeps your spine aligned in every position." } },
+        "n4": { "type": "feature", "settings": { "title": "Breathable Tencel cover", "description": "Silky smooth, hypoallergenic, and moisture wicking. Removable and machine washable." } }
       },
       "block_order": ["n1", "n2", "n3", "n4"]
     },
     "sticky-story": {
       "type": "sticky-story",
       "settings": {
-        "eyebrow": "How it's made",
-        "heading": "From workshop to your living room",
+        "eyebrow": "How it is made",
+        "heading": "Layer by considered layer.",
         "background": "surface"
       },
       "blocks": {
-        "c1": { "type": "chapter", "settings": { "title": "Kiln-dried in Vermont", "body": "Every frame begins with Appalachian hardwood, kiln-dried for eight weeks to stabilize the grain before a saw ever touches it.", "fallback_asset": "editorial-craft.jpg" } },
-        "c2": { "type": "chapter", "settings": { "title": "Joined by hand", "body": "Mortise-and-tenon joinery — the same technique that's held furniture together for 500 years. No staples, no shortcuts.", "fallback_asset": "cat-bedroom.jpg" } },
-        "c3": { "type": "chapter", "settings": { "title": "Finished with care", "body": "Hand-rubbed oils and waxes bring out the wood's natural depth. No plastic sheens, no VOC lacquers.", "fallback_asset": "cat-dining.jpg" } }
+        "c1": { "type": "chapter", "settings": { "title": "The cover", "body": "A breathable Tencel and organic cotton knit that stays cool to the touch, resists dust mites, and unzips for cleaning.", "fallback_asset": "mattress-craft.jpg" } },
+        "c2": { "type": "chapter", "settings": { "title": "The comfort layer", "body": "Two inches of cooling gel memory foam that contours to your body and releases pressure at the shoulders and hips.", "fallback_asset": "mattress-1.jpg" } },
+        "c3": { "type": "chapter", "settings": { "title": "The support core", "body": "A base of pocketed coils, each moving independently. Zoned to give firmer support where your spine needs it most.", "fallback_asset": "mattress-3.jpg" } }
       },
       "block_order": ["c1", "c2", "c3"]
     },
     "quote": {
       "type": "pull-quote",
       "settings": {
-        "quote": "Timeless craftsmanship at prices that shouldn't exist.",
-        "author": "Architectural Digest",
+        "quote": "The best sleep I have had in a decade. It is not even close.",
+        "author": "Verified DreamHive owner, Austin TX",
         "background": "default"
       }
     },
     "banner": {
       "type": "image-banner",
       "settings": {
-        "eyebrow": "Free service",
-        "heading": "Design with us.",
-        "text": "Book a complimentary consultation with a DreamHive design advisor.",
-        "button_text": "Book a consultation",
-        "button_link": "/pages/contact",
-        "height": 560,
-        "overlay": 45
+        "fallback_asset": "sleep-consult.jpg",
+        "eyebrow": "100 night sleep trial",
+        "heading": "Try it in your home for 100 nights.",
+        "text": "If it is not the best sleep of your life, we will pick it up and refund you in full. No restocking fees, no headaches.",
+        "button_text": "Shop mattresses",
+        "button_link": "/collections/all",
+        "button2_text": "How the trial works",
+        "button2_link": "/pages/trial",
+        "height": 620,
+        "overlay": 55,
+        "text_align": "center",
+        "show_badge": true,
+        "badge_label": "Rated",
+        "badge_value": "4.9 ★",
+        "badge_suffix": "12,000+ reviews"
       }
     },
     "lookbook": {
       "type": "lookbook",
-      "settings": { "eyebrow": "@dreamhive", "heading": "Tag us in your space", "columns": 4 },
+      "settings": {
+        "eyebrow": "#DreamHiveSleep",
+        "heading": "The mornings you deserve.",
+        "subheading": "Real customers, real bedrooms. Share yours with #DreamHiveSleep.",
+        "cta_text": "Follow @dreamhive on Instagram",
+        "cta_link": "#"
+      },
       "blocks": {
-        "l1": { "type": "photo", "settings": { "fallback_asset": "look-1.jpg" } },
-        "l2": { "type": "photo", "settings": { "fallback_asset": "look-2.jpg" } },
-        "l3": { "type": "photo", "settings": { "fallback_asset": "look-3.jpg" } },
-        "l4": { "type": "photo", "settings": { "fallback_asset": "look-4.jpg" } }
+        "l1": { "type": "photo", "settings": { "size": "wide", "handle": "@sarah.brooklyn", "caption": "First morning on the Original. Never sleeping on anything else.", "fallback_asset": "mattress-1.jpg" } },
+        "l2": { "type": "photo", "settings": { "size": "default", "handle": "@james.austin", "caption": "8 hours, uninterrupted.", "fallback_asset": "mattress-2.jpg" } },
+        "l3": { "type": "photo", "settings": { "size": "default", "handle": "@priya.sf", "caption": "Best decision this year.", "fallback_asset": "mattress-3.jpg" } },
+        "l4": { "type": "photo", "settings": { "size": "wide", "handle": "@casa.miller", "caption": "Guest room upgrade complete.", "fallback_asset": "mattress-4.jpg" } }
       },
       "block_order": ["l1", "l2", "l3", "l4"]
     },
     "newsletter": {
       "type": "newsletter",
       "settings": {
-        "eyebrow": "Stay inspired",
-        "heading": "Join the DreamHive list",
-        "subheading": "10% off your first order plus early access to new drops.",
+        "eyebrow": "Sleep better tonight",
+        "heading": "Join the DreamHive list.",
+        "subheading": "$100 off your first mattress, plus tips from our sleep science team.",
         "button_text": "Subscribe"
       }
     }
   },
-  "order": ["hero", "marquee", "statement", "editorial-grid", "carousel", "numbered", "sticky-story", "quote", "banner", "lookbook", "newsletter"]
+  "order": ["hero", "marquee", "statement", "sizes", "carousel", "numbered", "sticky-story", "quote", "banner", "lookbook", "newsletter"]
 }

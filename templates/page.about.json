@@ -28,7 +28,7 @@
       "blocks": {
         "f1": { "type": "feature", "settings": { "title": "Direct-to-you", "description": "No middlemen, no markups. We ship from our workshop to your door." } },
         "f2": { "type": "feature", "settings": { "title": "Made to order", "description": "Every piece is built when you order it. No warehouses, no waste." } },
-        "f3": { "type": "feature", "settings": { "title": "Lifetime support", "description": "Small repair or full re-upholstery — we help you keep it beautiful." } }
+        "f3": { "type": "feature", "settings": { "title": "Lifetime support", "description": "Small repair or full re-upholstery we help you keep it beautiful." } }
       },
       "block_order": ["f1", "f2", "f3"]
     },

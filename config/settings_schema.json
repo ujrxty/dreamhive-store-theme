@@ -47,12 +47,12 @@
       { "type": "color", "id": "color_muted", "label": "Muted / meta text", "default": "#8A857C" },
       { "type": "header", "content": "Accents" },
       { "type": "color", "id": "color_gold", "label": "Primary accent (gold)", "default": "#C9A24A" },
-      { "type": "color", "id": "color_gold_light", "label": "Gold — hover", "default": "#E5C88A" },
+      { "type": "color", "id": "color_gold_light", "label": "Gold hover", "default": "#E5C88A" },
       { "type": "color", "id": "color_silver", "label": "Silver accent", "default": "#C0C0C0" },
       { "type": "header", "content": "Buttons" },
       { "type": "color", "id": "color_btn_bg", "label": "Primary button background", "default": "#C9A24A" },
       { "type": "color", "id": "color_btn_text", "label": "Primary button text", "default": "#0E0E10" },
-      { "type": "color", "id": "color_btn_bg_hover", "label": "Primary button — hover", "default": "#E5C88A" },
+      { "type": "color", "id": "color_btn_bg_hover", "label": "Primary button hover", "default": "#E5C88A" },
       { "type": "header", "content": "Borders" },
       { "type": "color", "id": "color_border", "label": "Border / divider", "default": "#2A2A2E" }
     ]
@@ -146,10 +146,11 @@
         "id": "button_radius",
         "label": "Button corner radius",
         "min": 0,
-        "max": 40,
+        "max": 999,
         "step": 1,
         "unit": "px",
-        "default": 2
+        "default": 999,
+        "info": "Set to 999 for pill-shaped buttons."
       }
     ]
   },

@@ -29,7 +29,7 @@
         const s = document.createElement('span');
         s.className = 'split-char';
         s.textContent = c === ' ' ? ' ' : c;
-        s.style.transitionDelay = (i * 25) + 'ms';
+        s.style.transitionDelay = (i * 55) + 'ms';
         el.appendChild(s);
       });
     } else {
@@ -37,7 +37,7 @@
         const s = document.createElement('span');
         s.className = 'split-word';
         s.textContent = w;
-        s.style.transitionDelay = (i * 60) + 'ms';
+        s.style.transitionDelay = (i * 140) + 'ms';
         el.appendChild(s);
         if (i < text.split(/\s+/).length - 1) el.appendChild(document.createTextNode(' '));
       });
@@ -83,15 +83,50 @@
     });
   }
 
-  // ---- Horizontal carousel nav ----
+  // ---- Horizontal carousel: nav + auto-advance when idle ----
   document.querySelectorAll('[data-carousel]').forEach(root => {
     const track = root.querySelector('.carousel');
     const prev = root.querySelector('[data-carousel-prev]');
     const next = root.querySelector('[data-carousel-next]');
     if (!track) return;
-    const scrollBy = () => track.clientWidth * 0.6;
-    prev && prev.addEventListener('click', () => track.scrollBy({ left: -scrollBy(), behavior: 'smooth' }));
-    next && next.addEventListener('click', () => track.scrollBy({ left: scrollBy(), behavior: 'smooth' }));
+    const step = () => (track.querySelector(':scope > *')?.getBoundingClientRect().width || track.clientWidth * 0.5) + 24;
+    prev && prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+    next && next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
+
+    // Auto-advance
+    const autoAdvance = root.getAttribute('data-carousel-autoplay') !== 'false';
+    if (autoAdvance && !prefersReduced) {
+      let idleTimer;
+      let auto;
+      const interval = parseInt(root.getAttribute('data-carousel-interval'), 10) || 4200;
+      const start = () => {
+        stop();
+        auto = setInterval(() => {
+          const atEnd = track.scrollLeft + track.clientWidth + 8 >= track.scrollWidth;
+          if (atEnd) {
+            track.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            track.scrollBy({ left: step(), behavior: 'smooth' });
+          }
+        }, interval);
+      };
+      const stop = () => { if (auto) clearInterval(auto); auto = null; };
+      const pauseAndResume = () => {
+        stop();
+        clearTimeout(idleTimer);
+        idleTimer = setTimeout(start, 3500);
+      };
+      // Start only when in view
+      const startIo = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) start(); else stop();
+      }, { threshold: 0.25 });
+      startIo.observe(root);
+
+      ['scroll', 'pointerdown', 'touchstart', 'mouseenter'].forEach(ev => {
+        track.addEventListener(ev, pauseAndResume, { passive: true });
+      });
+      [prev, next].forEach(b => b && b.addEventListener('click', pauseAndResume));
+    }
   });
 
   // ---- Sticky-scroll story: switches media as user scrolls text ----

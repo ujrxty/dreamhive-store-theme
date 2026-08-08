@@ -19,24 +19,24 @@
         </div>
       {%- endif -%}
     {%- else -%}
-      {%- assign demo_names = 'Halston Sofa,Marlow Bed Frame,Ellis Dining Table,Astor Armchair' | split: ',' -%}
-      {%- assign demo_prices = '2495,1795,1495,895' | split: ',' -%}
-      {%- assign demo_imgs = 'look-1.jpg,cat-bedroom.jpg,cat-dining.jpg,look-3.jpg' | split: ',' -%}
+      {%- assign demo_names = 'The Original,The Hybrid,The Cooling,The Luxe' | split: ',' -%}
+      {%- assign demo_prices = '1295,1495,1795,2295' | split: ',' -%}
+      {%- assign demo_imgs = 'prod-original.jpg,prod-hybrid.jpg,prod-cooling.jpg,prod-luxe.jpg' | split: ',' -%}
       <div class="grid grid--{{ section.settings.columns }}">
         {%- for i in (0..3) -%}
           <a href="#" class="product-card" aria-label="{{ demo_names[i] }}">
             <div class="product-card__media product-card__media--{{ settings.card_image_ratio }}">
-              <img class="primary" src="{{ demo_imgs[i] | asset_url }}" alt="{{ demo_names[i] }}" loading="lazy" width="800" height="1000">
+              <img class="primary" src="{{ demo_imgs[i] | asset_url }}" alt="{{ demo_names[i] }} mattress" loading="lazy" width="800" height="1000">
               <span class="product-card__badge">Preview</span>
             </div>
             <div class="product-card__info">
               <h3 class="product-card__title">{{ demo_names[i] }}</h3>
-              <div class="product-card__price">${{ demo_prices[i] }}</div>
+              <div class="product-card__price">From ${{ demo_prices[i] }}</div>
             </div>
           </a>
         {%- endfor -%}
       </div>
-      <p class="text-center" style="margin-top:32px;color:var(--color-muted);font-size:0.85rem;">Demo preview — connect a collection in the theme editor to show real products.</p>
+      <p class="text-center" style="margin-top:32px;color:var(--color-muted);font-size:0.85rem;">Demo preview connect a collection in the theme editor to show real products.</p>
     {%- endif -%}
   </div>
 </section>

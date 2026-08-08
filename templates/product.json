@@ -11,7 +11,7 @@
         "description": { "type": "description" },
         "trust": { "type": "trust", "settings": { "trust_1": "Free US shipping", "trust_2": "10-year warranty", "trust_3": "30-day returns" } },
         "dimensions": { "type": "collapsible", "settings": { "heading": "Dimensions & materials", "content": "<p>Full dimensions and material specs shown here. Editable per product via metafields or per-section content.</p>" } },
-        "shipping": { "type": "collapsible", "settings": { "heading": "Shipping & delivery", "content": "<p>Free white-glove delivery on orders over $999. Standard delivery in 5–10 business days.</p>" } },
+        "shipping": { "type": "collapsible", "settings": { "heading": "Shipping & delivery", "content": "<p>Free white-glove delivery on orders over $999. Standard delivery in 5, 10 business days.</p>" } },
         "returns": { "type": "collapsible", "settings": { "heading": "Returns", "content": "<p>30-day hassle-free returns. We arrange at-home pickup.</p>" } },
         "share": { "type": "share" }
       },

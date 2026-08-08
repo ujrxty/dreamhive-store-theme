@@ -1,4 +1,4 @@
-<section class="section {% if section.settings.background == 'surface' %}section--surface{% elsif section.settings.background == 'light' %}section--light{% endif %}" data-carousel>
+<section class="section {% if section.settings.background == 'surface' %}section--surface{% elsif section.settings.background == 'light' %}section--light{% endif %}" data-carousel data-carousel-autoplay="true" data-carousel-interval="4500">
   <div class="page-width">
     <header style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px;flex-wrap:wrap;gap:24px;">
       <div>
@@ -18,17 +18,19 @@
           {%- render 'product-card', product: product -%}
         {%- endfor -%}
       {%- else -%}
-        {%- assign demo_names = 'Halston Sofa,Marlow Bed Frame,Ellis Dining Table,Astor Armchair,Nolan Sideboard,Reed Coffee Table' | split: ',' -%}
-        {%- assign demo_prices = '2495,1795,1495,895,1995,795' | split: ',' -%}
-        {%- assign demo_imgs = 'look-1.jpg,cat-bedroom.jpg,cat-dining.jpg,look-3.jpg,editorial-craft.jpg,look-4.jpg' | split: ',' -%}
-        {%- for i in (0..5) -%}
+        {%- assign demo_names = 'The Original,The Hybrid,The Cooling,The Luxe' | split: ',' -%}
+        {%- assign demo_subs = 'Memory foam classic,Coils + foam balance,Peak-summer cool,Pillow-top plush' | split: ',' -%}
+        {%- assign demo_prices = '1295,1495,1795,2295' | split: ',' -%}
+        {%- assign demo_imgs = 'prod-original.jpg,prod-hybrid.jpg,prod-cooling.jpg,prod-luxe.jpg' | split: ',' -%}
+        {%- for i in (0..3) -%}
           <a href="#" class="product-card" aria-label="{{ demo_names[i] }}">
             <div class="product-card__media product-card__media--{{ settings.card_image_ratio }}">
-              <img class="primary" src="{{ demo_imgs[i] | asset_url }}" alt="{{ demo_names[i] }}" loading="lazy" width="800" height="1000">
+              <img class="primary" src="{{ demo_imgs[i] | asset_url }}" alt="{{ demo_names[i] }} mattress" loading="lazy" width="800" height="1000">
+              <span class="product-card__badge">{{ demo_subs[i] }}</span>
             </div>
             <div class="product-card__info">
               <h3 class="product-card__title">{{ demo_names[i] }}</h3>
-              <div class="product-card__price">${{ demo_prices[i] }}</div>
+              <div class="product-card__price">From ${{ demo_prices[i] }}</div>
             </div>
           </a>
         {%- endfor -%}

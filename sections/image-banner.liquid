@@ -1,38 +1,107 @@
 <section class="section" style="padding-top:0;padding-bottom:0;">
-  <div style="position:relative;min-height:{{ section.settings.height }}px;display:grid;place-items:center;overflow:hidden;isolation:isolate;color:#fff;">
-    {%- if section.settings.image != blank -%}
-      <img src="{{ section.settings.image | image_url: width: 2400 }}"
-           style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;"
-           alt="{{ section.settings.image.alt | escape }}" loading="lazy" width="2400" height="1200">
-    {%- else -%}
-      <img src="{{ 'banner-consult.jpg' | asset_url }}"
-           style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;"
-           alt="" loading="lazy" width="2000" height="1333">
-    {%- endif -%}
-    <div style="position:absolute;inset:0;background:rgba(0,0,0,{{ section.settings.overlay | divided_by: 100.0 }});z-index:-1;"></div>
-    <div style="text-align:center;padding:40px 24px;max-width:720px;">
-      {%- if section.settings.eyebrow != blank -%}<div class="eyebrow">{{ section.settings.eyebrow }}</div>{%- endif -%}
-      {%- if section.settings.heading != blank -%}<h2 style="color:#fff;">{{ section.settings.heading }}</h2>{%- endif -%}
-      {%- if section.settings.text != blank -%}<p style="color:rgba(255,255,255,0.85);">{{ section.settings.text }}</p>{%- endif -%}
-      {%- if section.settings.button_text != blank -%}
-        <a href="{{ section.settings.button_link }}" class="btn" style="margin-top:12px;">{{ section.settings.button_text }}</a>
+  <div class="banner-hero" style="min-height:{{ section.settings.height }}px;">
+    <div class="banner-hero__media" data-parallax="0.18">
+      {%- if section.settings.image != blank -%}
+        <img src="{{ section.settings.image | image_url: width: 2400 }}" alt="{{ section.settings.image.alt | escape }}" loading="lazy" width="2400" height="1200">
+      {%- elsif section.settings.fallback_asset != blank -%}
+        <img src="{{ section.settings.fallback_asset | asset_url }}" alt="{{ section.settings.heading | escape }}" loading="lazy" width="2000" height="1333">
       {%- endif -%}
     </div>
+    <div class="banner-hero__overlay" style="background: linear-gradient(180deg, rgba(0,0,0,{{ section.settings.overlay | divided_by: 100.0 | times: 0.6 }}) 0%, rgba(0,0,0,{{ section.settings.overlay | divided_by: 100.0 }}) 100%);"></div>
+
+    <div class="banner-hero__content" style="text-align:{{ section.settings.text_align }};">
+      {%- if section.settings.eyebrow != blank -%}
+        <div class="eyebrow--dot" data-reveal style="color:var(--color-gold);margin-bottom:20px;{% if section.settings.text_align == 'center' %}justify-content:center;{% endif %}">{{ section.settings.eyebrow }}</div>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="display-xl" data-split="words" style="color:#fff;margin-bottom:16px;">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <p data-reveal data-reveal-delay="2" style="color:rgba(255,255,255,0.88);max-width:52ch;{% if section.settings.text_align == 'center' %}margin-inline:auto;{% endif %}font-size:1.05rem;line-height:1.6;">{{ section.settings.text }}</p>
+      {%- endif -%}
+      <div class="banner-hero__ctas" data-reveal data-reveal-delay="3" style="{% if section.settings.text_align == 'center' %}justify-content:center;{% endif %}">
+        {%- if section.settings.button_text != blank -%}
+          <a href="{{ section.settings.button_link | default: '#' }}" class="btn" data-magnetic="0.25">{{ section.settings.button_text }}</a>
+        {%- endif -%}
+        {%- if section.settings.button2_text != blank -%}
+          <a href="{{ section.settings.button2_link | default: '#' }}" class="btn btn--outline" data-magnetic="0.25" style="color:#fff;">{{ section.settings.button2_text }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- if section.settings.show_badge -%}
+      <div class="banner-hero__badge" data-reveal data-reveal-delay="4">
+        <div class="banner-hero__badge-inner">
+          <div style="font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-gold);margin-bottom:4px;">{{ section.settings.badge_label }}</div>
+          <div style="font-family:var(--font-heading);font-size:1.8rem;line-height:1;">{{ section.settings.badge_value }}</div>
+          <div style="font-size:0.7rem;color:var(--color-muted);margin-top:4px;">{{ section.settings.badge_suffix }}</div>
+        </div>
+      </div>
+    {%- endif -%}
   </div>
 </section>
+
+<style>
+  .banner-hero {
+    position: relative;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    isolation: isolate;
+    color: #fff;
+  }
+  .banner-hero__media { position: absolute; inset: -10%; z-index: -2; }
+  .banner-hero__media img { width: 100%; height: 100%; object-fit: cover; }
+  .banner-hero__overlay { position: absolute; inset: 0; z-index: -1; }
+  .banner-hero__content { max-width: 720px; padding: 60px 24px; }
+  .banner-hero__ctas { display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; }
+  .banner-hero__badge { position: absolute; top: clamp(20px, 4vw, 60px); right: clamp(20px, 4vw, 60px); z-index: 2; }
+  .banner-hero__badge-inner {
+    background: rgba(14,14,16,0.75);
+    backdrop-filter: blur(10px);
+    padding: 20px 24px;
+    border-radius: 999px;
+    border: 1px solid rgba(201,162,74,0.35);
+    text-align: center;
+    min-width: 160px;
+    animation: badgeFloat 6s ease-in-out infinite;
+  }
+  @keyframes badgeFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  @media (max-width: 749px) {
+    .banner-hero__badge { display: none; }
+    .banner-hero__ctas { flex-direction: column; align-items: stretch; }
+    .banner-hero__ctas .btn { width: 100%; }
+  }
+</style>
 
 {% schema %}
 {
   "name": "Image banner",
   "settings": [
     { "type": "image_picker", "id": "image", "label": "Image" },
-    { "type": "range", "id": "height", "label": "Height (px)", "min": 300, "max": 800, "step": 20, "default": 500 },
-    { "type": "range", "id": "overlay", "label": "Overlay opacity", "min": 0, "max": 80, "step": 5, "unit": "%", "default": 40 },
-    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Design your dream space" },
-    { "type": "text", "id": "text", "label": "Text", "default": "Free interior design consultation with every order." },
-    { "type": "text", "id": "button_text", "label": "Button text", "default": "Book a consultation" },
-    { "type": "url", "id": "button_link", "label": "Button link" }
+    { "type": "text", "id": "fallback_asset", "label": "Fallback asset", "default": "sleep-consult.jpg" },
+    { "type": "range", "id": "height", "label": "Height (px)", "min": 320, "max": 900, "step": 20, "default": 620 },
+    { "type": "range", "id": "overlay", "label": "Overlay opacity", "min": 0, "max": 80, "step": 5, "unit": "%", "default": 55 },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "100-night sleep trial" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Try it in your home for 100 nights." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "If it's not the best sleep of your life, we'll pick it up and refund you in full. No restocking fees, no headaches." },
+    { "type": "text", "id": "button_text", "label": "Primary button", "default": "Shop mattresses" },
+    { "type": "url", "id": "button_link", "label": "Primary link" },
+    { "type": "text", "id": "button2_text", "label": "Secondary button", "default": "How it works" },
+    { "type": "url", "id": "button2_link", "label": "Secondary link" },
+    {
+      "type": "select", "id": "text_align", "label": "Text alignment",
+      "options": [{ "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }],
+      "default": "center"
+    },
+    { "type": "header", "content": "Floating badge" },
+    { "type": "checkbox", "id": "show_badge", "label": "Show floating badge", "default": true },
+    { "type": "text", "id": "badge_label", "label": "Badge label", "default": "Rated" },
+    { "type": "text", "id": "badge_value", "label": "Badge value", "default": "4.9 ★" },
+    { "type": "text", "id": "badge_suffix", "label": "Badge suffix", "default": "12,000+ reviews" }
   ],
   "presets": [{ "name": "Image banner" }]
 }

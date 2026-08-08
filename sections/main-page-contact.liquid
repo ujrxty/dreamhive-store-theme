@@ -40,7 +40,7 @@
     <div style="background:var(--color-surface);padding:40px;border-radius:var(--radius);">
       {%- form 'contact', class: 'contact-form' -%}
         {%- if form.posted_successfully? -%}
-          <div style="color:var(--color-gold);text-align:center;padding:20px;">Thank you — we'll be in touch shortly.</div>
+          <div style="color:var(--color-gold);text-align:center;padding:20px;">Thank you we'll be in touch shortly.</div>
         {%- else -%}
           {{ form.errors | default_errors }}
           <h3 style="font-family:var(--font-heading);font-size:1.6rem;margin-bottom:24px;">Send us a note</h3>
@@ -70,7 +70,7 @@
     { "type": "text", "id": "email", "label": "Email", "default": "hello@dreamhive.com" },
     { "type": "text", "id": "phone", "label": "Phone", "default": "(555) 123-4567" },
     { "type": "textarea", "id": "address", "label": "Studio address", "default": "123 Design Row\nBrooklyn, NY 11201" },
-    { "type": "textarea", "id": "hours", "label": "Hours", "default": "Mon – Fri  10a – 6p\nSat  11a – 5p\nSun closed" }
+    { "type": "textarea", "id": "hours", "label": "Hours", "default": "Mon Fri  10a 6p\nSat  11a 5p\nSun closed" }
   ]
 }
 {% endschema %}
