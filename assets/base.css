@@ -212,20 +212,29 @@ p { margin: 0 0 1em; }
 .header-logo img { max-height: 44px; width: auto; }
 .header-actions { justify-self: end; display: flex; align-items: center; gap: 16px; }
 .header-actions button, .header-actions a { padding: 8px; }
+.header-actions button[data-cart-open], .header-actions a[href*="cart"] {
+  position: relative;
+  padding: 8px;
+}
 .cart-count-badge {
+  position: absolute;
+  top: -2px;
+  right: -4px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 18px;
-  height: 18px;
+  min-width: 16px;
+  height: 16px;
   background: var(--color-gold);
   color: var(--color-bg);
   border-radius: 999px;
-  font-size: 0.68rem;
-  font-weight: 600;
-  padding: 0 5px;
-  margin-left: 4px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 0 4px;
+  line-height: 1;
+  box-shadow: 0 0 0 2px var(--color-bg);
 }
+.cart-count-badge[hidden] { display: none; }
 
 .announcement-bar {
   background: var(--color-surface);
@@ -567,6 +576,46 @@ p { margin: 0 0 1em; }
 .cart-drawer__footer { padding: 24px; border-top: 1px solid var(--color-border); }
 .cart-item { display: grid; grid-template-columns: 80px 1fr auto; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--color-border); }
 .cart-item img { width: 80px; height: 100px; object-fit: cover; border-radius: var(--radius); }
+
+/* -------- form inputs (global) -------- */
+.field, .auth-input, .form-input {
+  display: block;
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  border-radius: var(--radius);
+  transition: border-color 200ms ease, background 200ms ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.field:focus, .auth-input:focus, .form-input:focus {
+  border-color: var(--color-gold);
+  outline: none;
+  background: rgba(201,162,74,0.05);
+}
+.field::placeholder, .auth-input::placeholder, .form-input::placeholder {
+  color: var(--color-muted);
+  font-family: var(--font-body);
+  opacity: 0.7;
+}
+textarea.field, textarea.auth-input, textarea.form-input {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.5;
+}
+.field-label, .auth-label {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 8px;
+  margin-top: 12px;
+}
 
 /* -------- utility -------- */
 .text-center { text-align: center; }

@@ -44,12 +44,12 @@
         {%- else -%}
           {{ form.errors | default_errors }}
           <h3 style="font-family:var(--font-heading);font-size:1.6rem;margin-bottom:24px;">Send us a note</h3>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-            <input type="text" name="contact[name]" placeholder="Name" required class="auth-input">
-            <input type="email" name="contact[email]" placeholder="Email" required class="auth-input">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+            <input type="text" name="contact[name]" placeholder="Name" required class="field">
+            <input type="email" name="contact[email]" placeholder="Email" required class="field">
           </div>
-          <input type="tel" name="contact[phone]" placeholder="Phone (optional)" class="auth-input">
-          <textarea name="contact[body]" placeholder="How can we help?" rows="5" required class="auth-input" style="resize:vertical;"></textarea>
+          <input type="tel" name="contact[phone]" placeholder="Phone (optional)" class="field" style="margin-bottom:12px;">
+          <textarea name="contact[body]" placeholder="How can we help?" rows="5" required class="field" style="margin-bottom:12px;"></textarea>
           <button type="submit" class="btn" style="width:100%;margin-top:12px;">Send message</button>
         {%- endif -%}
       {%- endform -%}
@@ -60,7 +60,11 @@
 <style>
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; }
   @media (max-width: 749px) { .contact-grid { grid-template-columns: 1fr; gap: 32px; } }
-  .contact-form .auth-input { margin-bottom: 12px; }
+  .contact-form { display: flex; flex-direction: column; }
+  @media (max-width: 549px) {
+    .contact-grid > div:last-child { padding: 24px !important; }
+    .contact-form > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
+  }
 </style>
 
 {% schema %}

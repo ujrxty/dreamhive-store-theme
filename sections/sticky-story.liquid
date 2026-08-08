@@ -1,6 +1,6 @@
 <section class="section {% if section.settings.background == 'surface' %}section--surface{% elsif section.settings.background == 'light' %}section--light{% endif %}">
   <div class="page-width">
-    <header style="margin-bottom:60px;max-width:600px;">
+    <header class="sticky-story-header" style="margin-bottom:48px;max-width:640px;">
       {%- if section.settings.eyebrow != blank -%}<div class="eyebrow--dot" data-reveal>{{ section.settings.eyebrow }}</div>{%- endif -%}
       {%- if section.settings.heading != blank -%}<h2 class="display-xl" data-split="words" style="margin-top:16px;">{{ section.settings.heading }}</h2>{%- endif -%}
     </header>
