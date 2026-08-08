@@ -146,11 +146,11 @@
         "id": "button_radius",
         "label": "Button corner radius",
         "min": 0,
-        "max": 999,
+        "max": 40,
         "step": 1,
         "unit": "px",
-        "default": 999,
-        "info": "Set to 999 for pill-shaped buttons."
+        "default": 40,
+        "info": "40px makes buttons fully pill-shaped."
       }
     ]
   },
