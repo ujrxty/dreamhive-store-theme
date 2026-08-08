@@ -36,7 +36,7 @@
     {%- endif -%}
 
     {%- if settings.card_show_quick_add and product.available -%}
-      <form method="post" action="/cart/add" class="product-card__quick-add-form" onclick="event.stopPropagation();">
+      <form method="post" action="{{ routes.cart_add_url }}" class="product-card__quick-add-form" onclick="event.stopPropagation();">
         <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
         <button type="submit" class="product-card__quick-add">Quick add</button>
       </form>

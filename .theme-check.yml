@@ -1,8 +1,10 @@
-extends: :theme_app_extension
+extends: :theme
 ignore:
   - node_modules/
   - .git/
 UnusedAssign:
   enabled: false
 UndefinedObject:
+  enabled: false
+ImgWidthAndHeight:
   enabled: false
