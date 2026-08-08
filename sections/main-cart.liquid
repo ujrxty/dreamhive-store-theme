@@ -1,43 +1,103 @@
 <section class="page-width section">
-  <h1 style="margin-bottom:32px;">{{ 'general.cart.cart' | t }}</h1>
+  <header style="text-align:center;margin-bottom:48px;">
+    <div class="eyebrow--dot" style="justify-content:center;">Your bag</div>
+    <h1 class="display-xl" style="margin-top:12px;">Cart</h1>
+  </header>
+
   {%- if cart.item_count == 0 -%}
-    <div style="text-align:center;padding:60px 0;">
-      <p style="color:var(--color-muted);margin-bottom:24px;">{{ 'general.cart.empty' | t }}</p>
-      <a href="{{ routes.all_products_collection_url }}" class="btn">{{ 'general.cart.continue_shopping' | t }}</a>
+    <div style="text-align:center;padding:80px 0;max-width:480px;margin:0 auto;">
+      <p style="color:var(--color-muted);margin-bottom:32px;font-size:1.05rem;">Your bag is empty. Time to find something beautiful.</p>
+      <a href="{{ routes.all_products_collection_url }}" class="btn" data-magnetic="0.2">{{ 'general.cart.continue_shopping' | t }}</a>
     </div>
   {%- else -%}
-    <form action="{{ routes.cart_url }}" method="post">
-      {%- for item in cart.items -%}
-        <div style="display:grid;grid-template-columns:120px 1fr auto;gap:20px;padding:20px 0;border-top:1px solid var(--color-border);">
-          <a href="{{ item.url }}"><img src="{{ item.image | image_url: width: 240 }}" alt="{{ item.title | escape }}" style="width:120px;aspect-ratio:4/5;object-fit:cover;border-radius:var(--radius);"></a>
-          <div>
-            <a href="{{ item.url }}" style="font-family:var(--font-heading);font-size:1.2rem;">{{ item.product.title }}</a>
-            {%- unless item.variant.title contains 'Default' -%}
-              <div style="color:var(--color-muted);font-size:0.88rem;margin-top:4px;">{{ item.variant.title }}</div>
-            {%- endunless -%}
-            <div style="margin-top:12px;">{{ item.final_price | money }}</div>
-            <div style="margin-top:12px;">
-              <input type="number" name="updates[{{ item.key }}]" value="{{ item.quantity }}" min="0" style="width:70px;background:transparent;border:1px solid var(--color-border);color:var(--color-text);padding:6px 10px;border-radius:var(--radius-btn);">
-              <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" style="margin-left:12px;color:var(--color-muted);font-size:0.85rem;">Remove</a>
+    <form action="{{ routes.cart_url }}" method="post" class="cart-layout">
+      <div class="cart-items">
+        {%- for item in cart.items -%}
+          <div class="cart-row">
+            <a href="{{ item.url }}" class="cart-row__img">
+              {%- if item.image -%}
+                <img src="{{ item.image | image_url: width: 240 }}" alt="{{ item.title | escape }}" width="120" height="150">
+              {%- endif -%}
+            </a>
+            <div class="cart-row__info">
+              <a href="{{ item.url }}" class="cart-row__title">{{ item.product.title }}</a>
+              {%- unless item.variant.title contains 'Default' -%}
+                <div class="cart-row__variant">{{ item.variant.title }}</div>
+              {%- endunless -%}
+              <div class="cart-row__price">{{ item.final_price | money }}</div>
+              <div class="cart-row__actions">
+                <div class="cart-qty">
+                  <button type="button" onclick="var i=this.nextElementSibling;i.value=Math.max(1,parseInt(i.value)-1);i.form.submit()">−</button>
+                  <input type="number" name="updates[{{ item.key }}]" value="{{ item.quantity }}" min="1">
+                  <button type="button" onclick="var i=this.previousElementSibling;i.value=parseInt(i.value)+1;i.form.submit()">+</button>
+                </div>
+                <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" class="cart-row__remove">Remove</a>
+              </div>
             </div>
+            <div class="cart-row__total">{{ item.final_line_price | money }}</div>
           </div>
-          <div style="text-align:right;">{{ item.final_line_price | money }}</div>
-        </div>
-      {%- endfor -%}
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:24px 0;border-top:1px solid var(--color-border);margin-top:24px;">
-        <div>
-          <button type="submit" name="update" class="btn btn--outline">Update</button>
-        </div>
-        <div style="text-align:right;">
-          <div style="color:var(--color-muted);font-size:0.85rem;margin-bottom:8px;">{{ 'general.cart.shipping_at_checkout' | t }}</div>
-          <div style="font-size:1.4rem;margin-bottom:16px;">{{ 'general.cart.subtotal' | t }}: <strong>{{ cart.total_price | money }}</strong></div>
-          <button type="submit" name="checkout" class="btn">{{ 'general.cart.checkout' | t }}</button>
-        </div>
+        {%- endfor -%}
+
+        {%- if section.settings.show_note -%}
+          <div style="margin-top:32px;">
+            <label style="font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-muted);display:block;margin-bottom:8px;">Order note</label>
+            <textarea name="note" rows="3" style="width:100%;padding:12px;background:transparent;border:1px solid var(--color-border);color:var(--color-text);border-radius:var(--radius-btn);font-family:inherit;">{{ cart.note }}</textarea>
+          </div>
+        {%- endif -%}
       </div>
+
+      <aside class="cart-summary">
+        <h3 style="font-family:var(--font-heading);font-size:1.4rem;margin-bottom:24px;">Order summary</h3>
+        <div class="cart-summary__row"><span>Subtotal</span><strong>{{ cart.total_price | money }}</strong></div>
+        <div class="cart-summary__row"><span>Shipping</span><span style="color:var(--color-muted);font-size:0.85rem;">Calculated at checkout</span></div>
+        <hr class="divider" style="margin:20px 0;">
+        <div class="cart-summary__row" style="font-size:1.15rem;"><span>Total</span><strong>{{ cart.total_price | money }}</strong></div>
+
+        {%- if settings.cart_free_shipping_message != blank -%}
+          <p style="font-size:0.78rem;color:var(--color-muted);margin-top:16px;text-align:center;">{{ settings.cart_free_shipping_message }}</p>
+        {%- endif -%}
+
+        <button type="submit" name="checkout" class="btn" style="width:100%;margin-top:24px;">{{ 'general.cart.checkout' | t }}</button>
+        <button type="submit" name="update" class="btn btn--outline" style="width:100%;margin-top:8px;font-size:0.75rem;padding:10px;min-height:auto;">Update cart</button>
+
+        <div style="display:flex;justify-content:center;gap:8px;margin-top:20px;opacity:0.6;flex-wrap:wrap;">
+          {%- for type in shop.enabled_payment_types -%}
+            {{ type | payment_type_svg_tag: class: 'payment-icon' }}
+          {%- endfor -%}
+        </div>
+      </aside>
     </form>
   {%- endif -%}
 </section>
 
+<style>
+  .cart-layout { display: grid; grid-template-columns: 1fr 380px; gap: 48px; align-items: start; }
+  @media (max-width: 989px) { .cart-layout { grid-template-columns: 1fr; } }
+  .cart-row { display: grid; grid-template-columns: 120px 1fr auto; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--color-border); }
+  .cart-row__img img { width: 120px; height: 150px; object-fit: cover; border-radius: var(--radius); }
+  .cart-row__title { font-family: var(--font-heading); font-size: 1.2rem; }
+  .cart-row__variant { color: var(--color-muted); font-size: 0.85rem; margin-top: 4px; }
+  .cart-row__price { margin-top: 8px; color: var(--color-gold); }
+  .cart-row__actions { display: flex; align-items: center; gap: 16px; margin-top: 16px; }
+  .cart-row__remove { color: var(--color-muted); font-size: 0.85rem; text-decoration: underline; }
+  .cart-row__total { font-size: 1.05rem; }
+  .cart-qty { display: flex; align-items: center; border: 1px solid var(--color-border); border-radius: var(--radius-btn); }
+  .cart-qty button { width: 32px; height: 32px; }
+  .cart-qty input { width: 40px; height: 32px; text-align: center; background: transparent; border: 0; color: var(--color-text); font-family: inherit; }
+  .cart-summary { background: var(--color-surface); padding: 32px; border-radius: var(--radius); position: sticky; top: 100px; }
+  .cart-summary__row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; }
+  @media (max-width: 549px) {
+    .cart-row { grid-template-columns: 80px 1fr; grid-template-rows: auto auto; }
+    .cart-row__img img { width: 80px; height: 100px; }
+    .cart-row__total { grid-column: 2; text-align: right; }
+  }
+</style>
+
 {% schema %}
-{ "name": "Cart", "settings": [] }
+{
+  "name": "Cart",
+  "settings": [
+    { "type": "checkbox", "id": "show_note", "label": "Show order note field", "default": true }
+  ]
+}
 {% endschema %}

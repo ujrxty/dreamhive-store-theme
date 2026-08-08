@@ -1,0 +1,26 @@
+<section class="section {% if section.settings.background == 'surface' %}section--surface{% elsif section.settings.background == 'light' %}section--light{% endif %}">
+  <div class="page-width">
+    <div class="pull-quote" data-reveal>
+      <blockquote class="pull-quote__text">{{ section.settings.quote }}</blockquote>
+      {%- if section.settings.author != blank -%}
+        <div class="pull-quote__author">— {{ section.settings.author }}</div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Pull quote",
+  "settings": [
+    { "type": "textarea", "id": "quote", "label": "Quote", "default": "Timeless craftsmanship at prices that shouldn't exist." },
+    { "type": "text", "id": "author", "label": "Attribution", "default": "Architectural Digest" },
+    {
+      "type": "select", "id": "background", "label": "Background",
+      "options": [{ "value": "default", "label": "Default" }, { "value": "surface", "label": "Surface" }, { "value": "light", "label": "Light" }],
+      "default": "default"
+    }
+  ],
+  "presets": [{ "name": "Pull quote" }]
+}
+{% endschema %}

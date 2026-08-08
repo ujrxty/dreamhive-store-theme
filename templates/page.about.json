@@ -1,0 +1,44 @@
+{
+  "sections": {
+    "hero": {
+      "type": "image-banner",
+      "settings": {
+        "eyebrow": "About DreamHive",
+        "heading": "Furniture made to last a lifetime.",
+        "text": "Founded on the belief that heirloom quality shouldn't be a luxury.",
+        "height": 560,
+        "overlay": 45,
+        "button_text": "",
+        "button_link": ""
+      }
+    },
+    "content": {
+      "type": "main-page-editorial",
+      "settings": {
+        "eyebrow": "Our story"
+      }
+    },
+    "features": {
+      "type": "numbered-features",
+      "settings": {
+        "eyebrow": "How we work",
+        "heading": "The DreamHive way",
+        "background": "surface"
+      },
+      "blocks": {
+        "f1": { "type": "feature", "settings": { "title": "Direct-to-you", "description": "No middlemen, no markups. We ship from our workshop to your door." } },
+        "f2": { "type": "feature", "settings": { "title": "Made to order", "description": "Every piece is built when you order it. No warehouses, no waste." } },
+        "f3": { "type": "feature", "settings": { "title": "Lifetime support", "description": "Small repair or full re-upholstery — we help you keep it beautiful." } }
+      },
+      "block_order": ["f1", "f2", "f3"]
+    },
+    "quote": {
+      "type": "pull-quote",
+      "settings": {
+        "quote": "Buy less, buy better, and pass it on.",
+        "author": "The DreamHive team"
+      }
+    }
+  },
+  "order": ["hero", "content", "features", "quote"]
+}

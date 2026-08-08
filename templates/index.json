@@ -3,101 +3,118 @@
     "hero": {
       "type": "hero",
       "settings": {
-        "eyebrow": "New collection",
-        "heading": "Sanctuary for modern living",
-        "subheading": "Heirloom-quality furniture, designed for the way you live now. Free white-glove delivery on orders over $999.",
+        "use_default_video": true,
+        "min_height": 95,
+        "enable_parallax": true,
+        "overlay_top": 25,
+        "overlay_bottom": 55,
+        "eyebrow": "Autumn / Winter",
+        "heading": "Live beautifully",
+        "heading_style": "display-xxl",
+        "subheading": "Heirloom furniture for the way you live now. Free white-glove delivery on orders over $999.",
+        "text_align": "center",
         "button_1_text": "Shop the collection",
         "button_1_link": "/collections/all",
         "button_2_text": "Explore lookbook",
-        "text_align": "center",
-        "min_height": 90,
-        "overlay_top": 25,
-        "overlay_bottom": 55
+        "show_scroll_hint": true,
+        "scroll_hint_text": "Scroll"
       }
     },
-    "usp": {
-      "type": "usp-strip",
+    "marquee": {
+      "type": "marquee",
+      "settings": { "speed": 40, "reverse": false },
       "blocks": {
-        "b1": { "type": "item", "settings": { "icon": "truck", "title": "Free US shipping", "text": "On orders over $199" } },
-        "b2": { "type": "item", "settings": { "icon": "shield", "title": "10-year warranty", "text": "On every frame & finish" } },
-        "b3": { "type": "item", "settings": { "icon": "refresh", "title": "30-day returns", "text": "Hassle-free, at-home pickup" } },
-        "b4": { "type": "item", "settings": { "icon": "credit-card", "title": "0% financing", "text": "With Shop Pay Installments" } }
+        "m1": { "type": "item", "settings": { "text": "Heirloom quality" } },
+        "m2": { "type": "item", "settings": { "text": "White-glove delivery" } },
+        "m3": { "type": "item", "settings": { "text": "10-year warranty" } },
+        "m4": { "type": "item", "settings": { "text": "Solid hardwood" } },
+        "m5": { "type": "item", "settings": { "text": "Made to last" } }
       },
-      "block_order": ["b1", "b2", "b3", "b4"]
+      "block_order": ["m1", "m2", "m3", "m4", "m5"]
     },
-    "categories": {
-      "type": "category-tiles",
+    "statement": {
+      "type": "big-statement",
+      "settings": {
+        "eyebrow": "Our philosophy",
+        "text": "<p>We believe furniture should <em>outlive trends</em>. Every DreamHive piece is designed to be loved for a lifetime — and passed on.</p>",
+        "background": "default"
+      }
+    },
+    "editorial-grid": {
+      "type": "editorial-grid",
       "settings": {
         "eyebrow": "Shop by room",
-        "heading": "Made for every corner of home",
-        "columns": 3
+        "heading": "Live beautifully."
       },
       "blocks": {
-        "t1": { "type": "tile", "settings": { "label": "Living room", "fallback_asset": "cat-living.jpg" } },
-        "t2": { "type": "tile", "settings": { "label": "Bedroom", "fallback_asset": "cat-bedroom.jpg" } },
-        "t3": { "type": "tile", "settings": { "label": "Dining", "fallback_asset": "cat-dining.jpg" } }
+        "e1": { "type": "tile", "settings": { "label": "Living", "fallback_asset": "cat-living.jpg" } },
+        "e2": { "type": "tile", "settings": { "label": "Bedroom", "fallback_asset": "cat-bedroom.jpg" } },
+        "e3": { "type": "tile", "settings": { "label": "Craft", "fallback_asset": "editorial-craft.jpg" } },
+        "e4": { "type": "tile", "settings": { "label": "Dining", "fallback_asset": "cat-dining.jpg" } }
       },
-      "block_order": ["t1", "t2", "t3"]
+      "block_order": ["e1", "e2", "e3", "e4"]
     },
-    "featured": {
-      "type": "featured-collection",
+    "carousel": {
+      "type": "product-carousel",
       "settings": {
-        "eyebrow": "Best sellers",
-        "heading": "Loved by the DreamHive community",
-        "columns": 4,
-        "product_limit": 8
+        "eyebrow": "Just landed",
+        "heading": "New this season",
+        "product_limit": 8,
+        "background": "surface"
       }
     },
-    "editorial": {
-      "type": "editorial-banner",
+    "numbered": {
+      "type": "numbered-features",
       "settings": {
-        "image_position": "left",
-        "eyebrow": "Craftsmanship",
-        "heading": "Built to be lived in for a lifetime",
-        "body": "<p>Solid hardwood frames, hand-finished by furniture-makers with decades of experience. Every DreamHive piece is quality-checked before it leaves our workshop.</p>",
-        "button_text": "Our story",
-        "button_link": "/pages/about"
+        "eyebrow": "The DreamHive standard",
+        "heading": "Everything considered",
+        "background": "default"
+      },
+      "blocks": {
+        "n1": { "type": "feature", "settings": { "title": "Solid hardwood frames", "description": "Kiln-dried oak and walnut, joined by hand with mortise-and-tenon construction." } },
+        "n2": { "type": "feature", "settings": { "title": "Full-grain leather", "description": "Sourced from Italian tanneries; ages with a patina that improves over decades." } },
+        "n3": { "type": "feature", "settings": { "title": "White-glove delivery", "description": "Two-person team, room-of-choice placement, assembly, and packaging removal." } },
+        "n4": { "type": "feature", "settings": { "title": "10-year warranty", "description": "On every frame and finish. We stand behind it because we made it to last." } }
+      },
+      "block_order": ["n1", "n2", "n3", "n4"]
+    },
+    "sticky-story": {
+      "type": "sticky-story",
+      "settings": {
+        "eyebrow": "How it's made",
+        "heading": "From workshop to your living room",
+        "background": "surface"
+      },
+      "blocks": {
+        "c1": { "type": "chapter", "settings": { "title": "Kiln-dried in Vermont", "body": "Every frame begins with Appalachian hardwood, kiln-dried for eight weeks to stabilize the grain before a saw ever touches it.", "fallback_asset": "editorial-craft.jpg" } },
+        "c2": { "type": "chapter", "settings": { "title": "Joined by hand", "body": "Mortise-and-tenon joinery — the same technique that's held furniture together for 500 years. No staples, no shortcuts.", "fallback_asset": "cat-bedroom.jpg" } },
+        "c3": { "type": "chapter", "settings": { "title": "Finished with care", "body": "Hand-rubbed oils and waxes bring out the wood's natural depth. No plastic sheens, no VOC lacquers.", "fallback_asset": "cat-dining.jpg" } }
+      },
+      "block_order": ["c1", "c2", "c3"]
+    },
+    "quote": {
+      "type": "pull-quote",
+      "settings": {
+        "quote": "Timeless craftsmanship at prices that shouldn't exist.",
+        "author": "Architectural Digest",
+        "background": "default"
       }
-    },
-    "press": {
-      "type": "press-strip",
-      "blocks": {
-        "p1": { "type": "press", "settings": { "name": "Architectural Digest" } },
-        "p2": { "type": "press", "settings": { "name": "Dwell" } },
-        "p3": { "type": "press", "settings": { "name": "Elle Decor" } },
-        "p4": { "type": "press", "settings": { "name": "Apartment Therapy" } },
-        "p5": { "type": "press", "settings": { "name": "House Beautiful" } }
-      },
-      "block_order": ["p1", "p2", "p3", "p4", "p5"]
-    },
-    "testimonials": {
-      "type": "testimonials",
-      "blocks": {
-        "r1": { "type": "testimonial", "settings": { "stars": 5, "quote": "The quality is unreal — it looks and feels like something twice the price. Delivery was smooth and the team assembled everything.", "author": "Sarah M., Austin, TX" } },
-        "r2": { "type": "testimonial", "settings": { "stars": 5, "quote": "Our sofa is the new favorite spot in the house. My kids won't leave it alone.", "author": "James L., Brooklyn, NY" } },
-        "r3": { "type": "testimonial", "settings": { "stars": 5, "quote": "Beautiful craftsmanship. You can tell these are built to last generations.", "author": "Priya D., San Francisco, CA" } }
-      },
-      "block_order": ["r1", "r2", "r3"]
     },
     "banner": {
       "type": "image-banner",
       "settings": {
         "eyebrow": "Free service",
-        "heading": "Design your dream space with us",
+        "heading": "Design with us.",
         "text": "Book a complimentary consultation with a DreamHive design advisor.",
         "button_text": "Book a consultation",
         "button_link": "/pages/contact",
-        "height": 480,
+        "height": 560,
         "overlay": 45
       }
     },
     "lookbook": {
       "type": "lookbook",
-      "settings": {
-        "eyebrow": "@dreamhive",
-        "heading": "Tag us in your space",
-        "columns": 4
-      },
+      "settings": { "eyebrow": "@dreamhive", "heading": "Tag us in your space", "columns": 4 },
       "blocks": {
         "l1": { "type": "photo", "settings": { "fallback_asset": "look-1.jpg" } },
         "l2": { "type": "photo", "settings": { "fallback_asset": "look-2.jpg" } },
@@ -116,5 +133,5 @@
       }
     }
   },
-  "order": ["hero", "usp", "categories", "featured", "editorial", "press", "testimonials", "banner", "lookbook", "newsletter"]
+  "order": ["hero", "marquee", "statement", "editorial-grid", "carousel", "numbered", "sticky-story", "quote", "banner", "lookbook", "newsletter"]
 }

@@ -1,12 +1,35 @@
-<section class="page-width section" style="max-width:440px;">
-  <h1 style="text-align:center;">{{ 'customer.login.title' | t }}</h1>
-  {%- form 'customer_login' -%}
-    {{ form.errors | default_errors }}
-    <label for="CustomerEmail">{{ 'customer.login.email' | t }}</label>
-    <input type="email" name="customer[email]" id="CustomerEmail" required style="width:100%;padding:12px;background:transparent;border:1px solid var(--color-border);color:var(--color-text);margin-bottom:16px;border-radius:var(--radius-btn);">
-    <label for="CustomerPassword">{{ 'customer.login.password' | t }}</label>
-    <input type="password" name="customer[password]" id="CustomerPassword" required style="width:100%;padding:12px;background:transparent;border:1px solid var(--color-border);color:var(--color-text);margin-bottom:16px;border-radius:var(--radius-btn);">
-    <button type="submit" class="btn" style="width:100%;">{{ 'customer.login.sign_in' | t }}</button>
-  {%- endform -%}
-  <p style="text-align:center;margin-top:20px;color:var(--color-muted);"><a href="{{ routes.account_register_url }}">{{ 'customer.login.create_account' | t }}</a></p>
+<section class="page-width" style="padding:80px 0;">
+  <div class="auth-shell">
+    <div class="auth-shell__media">
+      <img src="{{ 'editorial-craft.jpg' | asset_url }}" alt="" loading="lazy" width="900" height="1200">
+    </div>
+    <div class="auth-shell__form">
+      <div class="eyebrow--dot" style="margin-bottom:16px;">Welcome back</div>
+      <h1 class="display-xl" style="margin-bottom:16px;">Sign in</h1>
+      <p style="color:var(--color-muted);margin-bottom:32px;">Access your orders, saved items, and design consult history.</p>
+      {%- form 'customer_login' -%}
+        {{ form.errors | default_errors }}
+        <label for="CustomerEmail" class="auth-label">{{ 'customer.login.email' | t }}</label>
+        <input type="email" name="customer[email]" id="CustomerEmail" required class="auth-input">
+        <label for="CustomerPassword" class="auth-label">{{ 'customer.login.password' | t }}</label>
+        <input type="password" name="customer[password]" id="CustomerPassword" required class="auth-input">
+        <button type="submit" class="btn" style="width:100%;">{{ 'customer.login.sign_in' | t }}</button>
+        <div style="display:flex;justify-content:space-between;margin-top:16px;font-size:0.85rem;">
+          <a href="{{ routes.account_recover_url }}" style="color:var(--color-muted);">{{ 'customer.login.forgot_password' | t }}</a>
+          <a href="{{ routes.account_register_url }}" style="color:var(--color-gold);">{{ 'customer.login.create_account' | t }} →</a>
+        </div>
+      {%- endform -%}
+    </div>
+  </div>
 </section>
+
+<style>
+  .auth-shell { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: stretch; max-width: 1200px; margin: 0 auto; }
+  .auth-shell__media { aspect-ratio: 3/4; overflow: hidden; border-radius: var(--radius); }
+  .auth-shell__media img { width: 100%; height: 100%; object-fit: cover; }
+  .auth-shell__form { display: flex; flex-direction: column; justify-content: center; max-width: 420px; }
+  .auth-label { display: block; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-muted); margin-bottom: 8px; margin-top: 12px; }
+  .auth-input { width: 100%; padding: 14px 16px; background: transparent; border: 1px solid var(--color-border); color: var(--color-text); border-radius: var(--radius-btn); font-family: inherit; font-size: 0.95rem; margin-bottom: 8px; }
+  .auth-input:focus { border-color: var(--color-gold); outline: none; }
+  @media (max-width: 749px) { .auth-shell { grid-template-columns: 1fr; gap: 32px; } .auth-shell__media { display: none; } }
+</style>

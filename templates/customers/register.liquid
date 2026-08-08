@@ -1,11 +1,42 @@
-<section class="page-width section" style="max-width:440px;">
-  <h1 style="text-align:center;">{{ 'customer.register.title' | t }}</h1>
-  {%- form 'create_customer' -%}
-    {{ form.errors | default_errors }}
-    <input type="text" name="customer[first_name]" placeholder="{{ 'customer.register.first_name' | t }}" required style="width:100%;padding:12px;background:transparent;border:1px solid var(--color-border);color:var(--color-text);margin-bottom:12px;border-radius:var(--radius-btn);">
-    <input type="text" name="customer[last_name]" placeholder="{{ 'customer.register.last_name' | t }}" required style="width:100%;padding:12px;background:transparent;border:1px solid var(--color-border);color:var(--color-text);margin-bottom:12px;border-radius:var(--radius-btn);">
-    <input type="email" name="customer[email]" placeholder="{{ 'customer.register.email' | t }}" required style="width:100%;padding:12px;background:transparent;border:1px solid var(--color-border);color:var(--color-text);margin-bottom:12px;border-radius:var(--radius-btn);">
-    <input type="password" name="customer[password]" placeholder="{{ 'customer.register.password' | t }}" required style="width:100%;padding:12px;background:transparent;border:1px solid var(--color-border);color:var(--color-text);margin-bottom:16px;border-radius:var(--radius-btn);">
-    <button type="submit" class="btn" style="width:100%;">{{ 'customer.register.submit' | t }}</button>
-  {%- endform -%}
+<section class="page-width" style="padding:80px 0;">
+  <div class="auth-shell">
+    <div class="auth-shell__media">
+      <img src="{{ 'cat-bedroom.jpg' | asset_url }}" alt="" loading="lazy" width="900" height="1200">
+    </div>
+    <div class="auth-shell__form">
+      <div class="eyebrow--dot" style="margin-bottom:16px;">Join DreamHive</div>
+      <h1 class="display-xl" style="margin-bottom:16px;">Create account</h1>
+      <p style="color:var(--color-muted);margin-bottom:32px;">Early access to new drops, saved wishlists, and complimentary design consults.</p>
+      {%- form 'create_customer' -%}
+        {{ form.errors | default_errors }}
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div>
+            <label class="auth-label">{{ 'customer.register.first_name' | t }}</label>
+            <input type="text" name="customer[first_name]" required class="auth-input">
+          </div>
+          <div>
+            <label class="auth-label">{{ 'customer.register.last_name' | t }}</label>
+            <input type="text" name="customer[last_name]" required class="auth-input">
+          </div>
+        </div>
+        <label class="auth-label">{{ 'customer.register.email' | t }}</label>
+        <input type="email" name="customer[email]" required class="auth-input">
+        <label class="auth-label">{{ 'customer.register.password' | t }}</label>
+        <input type="password" name="customer[password]" required class="auth-input">
+        <button type="submit" class="btn" style="width:100%;margin-top:8px;">{{ 'customer.register.submit' | t }}</button>
+        <p style="text-align:center;margin-top:16px;font-size:0.85rem;color:var(--color-muted);">Already have an account? <a href="{{ routes.account_login_url }}" style="color:var(--color-gold);">Sign in</a></p>
+      {%- endform -%}
+    </div>
+  </div>
 </section>
+
+<style>
+  .auth-shell { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; }
+  .auth-shell__media { aspect-ratio: 3/4; overflow: hidden; border-radius: var(--radius); }
+  .auth-shell__media img { width: 100%; height: 100%; object-fit: cover; }
+  .auth-shell__form { display: flex; flex-direction: column; justify-content: center; max-width: 460px; }
+  .auth-label { display: block; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-muted); margin-bottom: 8px; margin-top: 12px; }
+  .auth-input { width: 100%; padding: 14px 16px; background: transparent; border: 1px solid var(--color-border); color: var(--color-text); border-radius: var(--radius-btn); font-family: inherit; font-size: 0.95rem; margin-bottom: 8px; }
+  .auth-input:focus { border-color: var(--color-gold); outline: none; }
+  @media (max-width: 749px) { .auth-shell { grid-template-columns: 1fr; gap: 32px; } .auth-shell__media { display: none; } }
+</style>

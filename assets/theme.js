@@ -168,9 +168,22 @@
     thumbs.forEach(t => t.addEventListener('click', () => {
       thumbs.forEach(x => x.classList.remove('active'));
       t.classList.add('active');
+      if (!main) return;
       main.src = t.getAttribute('data-src');
       main.srcset = '';
+      const zoom = t.getAttribute('data-zoom');
+      if (zoom) main.setAttribute('data-zoom-src', zoom);
     }));
+  });
+
+  // ---- Variant selected value display ----
+  document.querySelectorAll('[data-variant-form]').forEach(form => {
+    form.addEventListener('change', (e) => {
+      const group = e.target.closest('.pdp__variant-group');
+      if (!group) return;
+      const label = group.querySelector('[data-selected-value]');
+      if (label && e.target.value) label.textContent = e.target.value;
+    });
   });
 
   // ---- Toast ----

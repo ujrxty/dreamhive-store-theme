@@ -1,18 +1,24 @@
-<section class="hero" style="min-height: {{ section.settings.min_height }}vh;">
-  <div class="hero__media">
+<section class="hero hero--{{ section.settings.layout }}" style="min-height: {{ section.settings.min_height }}vh;">
+  <div class="hero__media" data-parallax="{% if section.settings.enable_parallax %}0.15{% else %}0{% endif %}">
     {%- if section.settings.video != blank -%}
-      <video autoplay muted loop playsinline>
+      <video autoplay muted loop playsinline preload="auto">
         <source src="{{ section.settings.video.sources[1].url }}" type="{{ section.settings.video.sources[1].mime_type }}">
+      </video>
+    {%- elsif section.settings.video_url != blank -%}
+      <video autoplay muted loop playsinline preload="auto">
+        <source src="{{ section.settings.video_url }}" type="video/mp4">
+      </video>
+    {%- elsif section.settings.use_default_video -%}
+      <video autoplay muted loop playsinline preload="auto" poster="{{ 'hero-luxury-living.jpg' | asset_url }}">
+        <source src="{{ 'hero-video.mp4' | asset_url }}" type="video/mp4">
       </video>
     {%- elsif section.settings.image != blank -%}
       <img src="{{ section.settings.image | image_url: width: 2400 }}"
            srcset="{{ section.settings.image | image_url: width: 800 }} 800w, {{ section.settings.image | image_url: width: 1600 }} 1600w, {{ section.settings.image | image_url: width: 2400 }} 2400w"
            sizes="100vw"
            alt="{{ section.settings.image.alt | escape }}"
-           loading="eager"
-           fetchpriority="high"
-           width="{{ section.settings.image.width }}"
-           height="{{ section.settings.image.height }}">
+           loading="eager" fetchpriority="high"
+           width="{{ section.settings.image.width }}" height="{{ section.settings.image.height }}">
     {%- else -%}
       <img src="{{ 'hero-luxury-living.jpg' | asset_url }}" alt="" loading="eager" fetchpriority="high" width="2000" height="1333" style="width:100%;height:100%;object-fit:cover;">
     {%- endif -%}
@@ -20,22 +26,36 @@
   <div class="hero__overlay" style="background: linear-gradient(180deg, rgba(0,0,0,{{ section.settings.overlay_top | divided_by: 100.0 }}) 0%, rgba(0,0,0,{{ section.settings.overlay_bottom | divided_by: 100.0 }}) 100%);"></div>
   <div class="hero__content" style="text-align: {{ section.settings.text_align }};">
     {%- if section.settings.eyebrow != blank -%}
-      <div class="eyebrow" style="color: var(--color-gold);">{{ section.settings.eyebrow }}</div>
+      <div class="eyebrow--dot" data-reveal="fade" style="margin-bottom:24px;{% if section.settings.text_align == 'center' %}justify-content:center;{% endif %}">{{ section.settings.eyebrow }}</div>
     {%- endif -%}
     {%- if section.settings.heading != blank -%}
-      <h1>{{ section.settings.heading }}</h1>
+      {%- if section.settings.heading_style == 'display-xxl' -%}
+        <h1 class="display-xxl" data-split="words" style="color:#fff;">{{ section.settings.heading }}</h1>
+      {%- elsif section.settings.heading_style == 'display-xl' -%}
+        <h1 class="display-xl" data-split="words" style="color:#fff;">{{ section.settings.heading }}</h1>
+      {%- else -%}
+        <h1 data-split="words">{{ section.settings.heading }}</h1>
+      {%- endif -%}
     {%- endif -%}
     {%- if section.settings.subheading != blank -%}
-      <p>{{ section.settings.subheading }}</p>
+      <p data-reveal data-reveal-delay="2">{{ section.settings.subheading }}</p>
     {%- endif -%}
-    <div class="hero__ctas">
+    <div class="hero__ctas" data-reveal data-reveal-delay="3">
       {%- if section.settings.button_1_text != blank -%}
-        <a href="{{ section.settings.button_1_link }}" class="btn">{{ section.settings.button_1_text }}</a>
+        <a href="{{ section.settings.button_1_link | default: '#' }}" class="btn" data-magnetic="0.25">{{ section.settings.button_1_text }}</a>
       {%- endif -%}
       {%- if section.settings.button_2_text != blank -%}
-        <a href="{{ section.settings.button_2_link }}" class="btn btn--outline" style="color:#fff;">{{ section.settings.button_2_text }}</a>
+        <a href="{{ section.settings.button_2_link | default: '#' }}" class="btn btn--outline" data-magnetic="0.25" style="color:#fff;">{{ section.settings.button_2_text }}</a>
       {%- endif -%}
     </div>
+
+    {%- if section.settings.show_scroll_hint -%}
+      <div style="position:absolute;bottom:32px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.7);font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <span>{{ section.settings.scroll_hint_text }}</span>
+        <span style="width:1px;height:32px;background:currentColor;animation:scrollHint 2s ease-in-out infinite;"></span>
+      </div>
+      <style>@keyframes scrollHint { 0%,100% { transform: scaleY(0.3); transform-origin: top; } 50% { transform: scaleY(1); } }</style>
+    {%- endif -%}
   </div>
 </section>
 
@@ -44,31 +64,47 @@
   "name": "Hero",
   "settings": [
     { "type": "header", "content": "Media" },
+    { "type": "checkbox", "id": "use_default_video", "label": "Use bundled demo video", "default": true, "info": "Uses the free-license luxury interior video shipped with the theme. Turn off to use your own." },
     { "type": "image_picker", "id": "image", "label": "Background image" },
-    { "type": "video", "id": "video", "label": "Background video (overrides image)" },
-    { "type": "range", "id": "min_height", "label": "Height (viewport %)", "min": 50, "max": 100, "step": 5, "unit": "%", "default": 85 },
-    { "type": "range", "id": "overlay_top", "label": "Overlay opacity (top)", "min": 0, "max": 80, "step": 5, "unit": "%", "default": 30 },
+    { "type": "video", "id": "video", "label": "Background video (Shopify upload)" },
+    { "type": "url", "id": "video_url", "label": "External MP4 URL (alternative)" },
+    { "type": "range", "id": "min_height", "label": "Height (viewport %)", "min": 50, "max": 100, "step": 5, "unit": "%", "default": 95 },
+    { "type": "checkbox", "id": "enable_parallax", "label": "Enable parallax", "default": true },
+    { "type": "range", "id": "overlay_top", "label": "Overlay opacity (top)", "min": 0, "max": 80, "step": 5, "unit": "%", "default": 25 },
     { "type": "range", "id": "overlay_bottom", "label": "Overlay opacity (bottom)", "min": 0, "max": 90, "step": 5, "unit": "%", "default": 55 },
     { "type": "header", "content": "Content" },
-    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "New collection" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Autumn / Winter" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Sanctuary for modern living" },
-    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Heirloom-quality furniture designed for the way you live now. Free white-glove delivery on orders over $999." },
     {
       "type": "select",
-      "id": "text_align",
-      "label": "Text alignment",
+      "id": "heading_style",
+      "label": "Heading style",
       "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "right", "label": "Right" }
+        { "value": "default", "label": "Default (h1)" },
+        { "value": "display-xl", "label": "Display XL (large)" },
+        { "value": "display-xxl", "label": "Display XXL (massive)" }
       ],
+      "default": "display-xl"
+    },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Heirloom furniture for the way you live now. Free white-glove delivery on orders over $999." },
+    {
+      "type": "select", "id": "text_align", "label": "Text alignment",
+      "options": [{ "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" }],
       "default": "center"
+    },
+    {
+      "type": "select", "id": "layout", "label": "Layout preset",
+      "options": [{ "value": "standard", "label": "Standard" }, { "value": "editorial", "label": "Editorial (offset)" }],
+      "default": "standard"
     },
     { "type": "header", "content": "Buttons" },
     { "type": "text", "id": "button_1_text", "label": "Primary button text", "default": "Shop the collection" },
     { "type": "url", "id": "button_1_link", "label": "Primary button link" },
     { "type": "text", "id": "button_2_text", "label": "Secondary button text", "default": "Explore lookbook" },
-    { "type": "url", "id": "button_2_link", "label": "Secondary button link" }
+    { "type": "url", "id": "button_2_link", "label": "Secondary button link" },
+    { "type": "header", "content": "Scroll hint" },
+    { "type": "checkbox", "id": "show_scroll_hint", "label": "Show scroll hint", "default": true },
+    { "type": "text", "id": "scroll_hint_text", "label": "Scroll hint text", "default": "Scroll" }
   ],
   "presets": [{ "name": "Hero" }]
 }

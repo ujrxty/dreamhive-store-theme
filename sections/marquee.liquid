@@ -1,0 +1,42 @@
+<section class="marquee {% if section.settings.reverse %}marquee--reverse{% endif %}" style="--speed: {{ section.settings.speed }}s;">
+  <div class="marquee__track" style="animation-duration: {{ section.settings.speed }}s;">
+    {%- comment -%} duplicate the items so the loop is seamless {%- endcomment -%}
+    {%- for i in (1..2) -%}
+      {%- for block in section.blocks -%}
+        <span class="marquee__item">{{ block.settings.text }}</span>
+      {%- endfor -%}
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Marquee",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "range", "id": "speed", "label": "Speed (seconds per loop)", "min": 15, "max": 90, "step": 5, "default": 40 },
+    { "type": "checkbox", "id": "reverse", "label": "Reverse direction", "default": false }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Text",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "Heirloom quality" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Marquee",
+      "blocks": [
+        { "type": "item", "settings": { "text": "Heirloom quality" } },
+        { "type": "item", "settings": { "text": "White-glove delivery" } },
+        { "type": "item", "settings": { "text": "10-year warranty" } },
+        { "type": "item", "settings": { "text": "Solid hardwood" } },
+        { "type": "item", "settings": { "text": "Made to last" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

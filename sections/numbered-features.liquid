@@ -1,0 +1,57 @@
+<section class="section {% if section.settings.background == 'surface' %}section--surface{% elsif section.settings.background == 'light' %}section--light{% endif %}">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <header style="margin-bottom:60px;max-width:560px;">
+        {%- if section.settings.eyebrow != blank -%}<div class="eyebrow--dot" data-reveal>{{ section.settings.eyebrow }}</div>{%- endif -%}
+        <h2 class="display-xl" data-split="words" style="margin-top:20px;">{{ section.settings.heading }}</h2>
+      </header>
+    {%- endif -%}
+
+    <div class="numbered">
+      {%- for block in section.blocks -%}
+        <div class="numbered__item" data-reveal {{ block.shopify_attributes }}>
+          <div class="numbered__num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</div>
+          <h3 class="numbered__title">{{ block.settings.title }}</h3>
+          <p class="numbered__desc">{{ block.settings.description }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Numbered features",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The DreamHive standard" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Everything considered" },
+    {
+      "type": "select", "id": "background", "label": "Background",
+      "options": [{ "value": "default", "label": "Default" }, { "value": "surface", "label": "Surface" }, { "value": "light", "label": "Light" }],
+      "default": "default"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Solid hardwood frames" },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "Kiln-dried oak and walnut, joined by hand with mortise-and-tenon construction." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Numbered features",
+      "blocks": [
+        { "type": "feature", "settings": { "title": "Solid hardwood frames", "description": "Kiln-dried oak and walnut, joined by hand with mortise-and-tenon construction." } },
+        { "type": "feature", "settings": { "title": "Full-grain leather", "description": "Sourced from Italian tanneries; ages with a patina that improves over decades." } },
+        { "type": "feature", "settings": { "title": "White-glove delivery", "description": "Two-person team, room-of-choice placement, assembly, and packaging removal." } },
+        { "type": "feature", "settings": { "title": "10-year warranty", "description": "On every frame and finish. We stand behind it because we made it to last." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
