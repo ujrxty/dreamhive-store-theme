@@ -22,7 +22,7 @@
     "page_width": 1440,
     "section_padding_y": 96,
     "corner_radius": 4,
-    "button_radius": 999,
+    "button_radius": 40,
     "card_image_ratio": "portrait",
     "card_show_vendor": false,
     "card_show_second_image": true,
