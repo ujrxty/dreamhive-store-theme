@@ -41,6 +41,19 @@
       <a href="{{ link.url }}">{{ link.title }}</a>
     {%- endfor -%}
   </nav>
+  <div class="mobile-drawer__actions">
+    <a href="{{ routes.search_url }}">Search</a>
+    {%- if shop.customer_accounts_enabled -%}
+      {%- if customer -%}
+        <a href="{{ routes.account_url }}">My account</a>
+        <a href="{{ routes.account_logout_url }}">Sign out</a>
+      {%- else -%}
+        <a href="{{ routes.account_login_url }}">Sign in</a>
+        <a href="{{ routes.account_register_url }}">Create account</a>
+      {%- endif -%}
+    {%- endif -%}
+    <a href="{{ routes.cart_url }}">Cart ({{ cart.item_count }})</a>
+  </div>
 </div>
 
 {% schema %}
