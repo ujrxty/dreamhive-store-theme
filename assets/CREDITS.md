@@ -15,4 +15,6 @@ All demo imagery is from Unsplash (free commercial-use license, no attribution r
 | look-3.jpg | Collov Home Design | photo-1600210491892-03d54c0aaf87 |
 | look-4.jpg | aranprime | photo-1599696848652-f0ff23bc911f |
 
-These are demo placeholders. Replace them by uploading your own images in the Shopify theme editor.
+| hero-video.mp4 | Pexels | https://www.pexels.com/video/woman-fixing-bed-6195935/ |
+
+These are demo placeholders. Replace them by uploading your own images/videos in the Shopify theme editor.
