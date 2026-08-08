@@ -1,0 +1,26 @@
+<section class="page-width section">
+  <header class="section-header">
+    <h1>{{ page_title }}</h1>
+  </header>
+  <div class="grid grid--3">
+    {%- for collection in collections -%}
+      {%- if collection.handle != 'frontpage' -%}
+        <a href="{{ collection.url }}" class="category-tile">
+          {%- if collection.image or collection.products.first.featured_image -%}
+            {%- assign img = collection.image | default: collection.products.first.featured_image -%}
+            <img src="{{ img | image_url: width: 900 }}" alt="{{ collection.title | escape }}" loading="lazy">
+          {%- else -%}
+            <div style="width:100%;height:100%;background:var(--color-surface);"></div>
+          {%- endif -%}
+          <div class="category-tile__overlay">
+            <span class="category-tile__label">{{ collection.title }}</span>
+          </div>
+        </a>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "List collections", "settings": [] }
+{% endschema %}

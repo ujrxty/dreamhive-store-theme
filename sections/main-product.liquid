@@ -1,0 +1,148 @@
+<section class="page-width pdp" data-gallery>
+  <div class="pdp__gallery">
+    <div class="pdp__gallery-main" data-gallery-main>
+      {%- if product.featured_media -%}
+        <img src="{{ product.featured_media | image_url: width: 1400 }}"
+             srcset="{{ product.featured_media | image_url: width: 700 }} 700w, {{ product.featured_media | image_url: width: 1400 }} 1400w"
+             sizes="(min-width: 990px) 55vw, 100vw"
+             alt="{{ product.featured_media.alt | escape | default: product.title }}"
+             loading="eager" width="1400" height="1750">
+      {%- endif -%}
+    </div>
+    {%- if product.media.size > 1 -%}
+      <div class="pdp__gallery-thumbs">
+        {%- for media in product.media limit: 6 -%}
+          <button type="button" data-gallery-thumb data-src="{{ media | image_url: width: 1400 }}"{% if forloop.first %} class="active"{% endif %} aria-label="View image {{ forloop.index }}">
+            <img src="{{ media | image_url: width: 200 }}" alt="" loading="lazy" width="200" height="200">
+          </button>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="pdp__info">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'vendor' -%}
+          {%- if product.vendor != blank -%}<div class="pdp__vendor" {{ block.shopify_attributes }}>{{ product.vendor }}</div>{%- endif -%}
+
+        {%- when 'title' -%}
+          <h1 class="pdp__title" {{ block.shopify_attributes }}>{{ product.title }}</h1>
+
+        {%- when 'rating' -%}
+          <div style="margin-bottom:16px;color:var(--color-gold);letter-spacing:3px;" {{ block.shopify_attributes }}>
+            {%- for i in (1..5) -%}★{%- endfor -%}
+            <span style="color:var(--color-muted);letter-spacing:normal;font-size:0.85rem;margin-left:8px;">{{ block.settings.review_count }}</span>
+          </div>
+
+        {%- when 'price' -%}
+          <div class="pdp__price" data-pdp-price {{ block.shopify_attributes }}>
+            {%- render 'price', product: product -%}
+          </div>
+          {%- if block.settings.show_installments -%}
+            <div class="pdp__installments">or 4 interest-free payments with Shop Pay</div>
+          {%- endif -%}
+
+        {%- when 'variant_picker' -%}
+          <form method="post" action="/cart/add" data-variant-form data-variants='{% for v in product.variants %}{"id":{{ v.id }},"options":{{ v.options | json }},"available":{{ v.available }},"price_html":"{{ v.price | money }}"}{% unless forloop.last %},{% endunless %}{% endfor %}' {{ block.shopify_attributes }}>
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+            {%- for option in product.options_with_values -%}
+              <div class="pdp__variant-group" data-option-index="{{ forloop.index0 }}">
+                <span class="pdp__variant-label">{{ option.name }}</span>
+                <div class="pdp__variant-options">
+                  {%- for value in option.values -%}
+                    <label>
+                      <input type="radio" name="option-{{ forloop.parentloop.index0 }}" value="{{ value }}"{% if option.selected_value == value %} checked{% endif %}>
+                      <span>{{ value }}</span>
+                    </label>
+                  {%- endfor -%}
+                </div>
+              </div>
+            {%- endfor -%}
+
+            <div class="pdp__qty" data-qty-wrap>
+              <span class="pdp__variant-label" style="margin-bottom:0;">{{ 'products.product.quantity' | t }}</span>
+              <button type="button" data-qty-dec aria-label="Decrease">−</button>
+              <input type="number" name="quantity" value="1" min="1">
+              <button type="button" data-qty-inc aria-label="Increase">+</button>
+            </div>
+
+            <button type="submit" class="btn pdp__atc" data-pdp-atc {% unless product.available %}disabled{% endunless %}>
+              {%- if product.available -%}{{ 'products.product.add_to_cart' | t }}{%- else -%}{{ 'products.product.sold_out' | t }}{%- endif -%}
+            </button>
+
+            {%- if block.settings.show_dynamic_checkout and product.selling_plan_groups == empty -%}
+              <div style="margin-top:12px;">{{ form | payment_button }}</div>
+            {%- endif -%}
+          </form>
+
+        {%- when 'description' -%}
+          <div style="margin:24px 0;color:var(--color-muted);line-height:1.7;" {{ block.shopify_attributes }}>
+            {{ product.description }}
+          </div>
+
+        {%- when 'trust' -%}
+          <div style="display:flex;gap:20px;padding:20px 0;border-top:1px solid var(--color-border);margin-top:16px;" {{ block.shopify_attributes }}>
+            <div style="flex:1;text-align:center;">
+              <div style="color:var(--color-gold);margin-bottom:6px;">{% render 'icon', name: 'truck' %}</div>
+              <div style="font-size:0.78rem;color:var(--color-muted);">{{ block.settings.trust_1 }}</div>
+            </div>
+            <div style="flex:1;text-align:center;">
+              <div style="color:var(--color-gold);margin-bottom:6px;">{% render 'icon', name: 'shield' %}</div>
+              <div style="font-size:0.78rem;color:var(--color-muted);">{{ block.settings.trust_2 }}</div>
+            </div>
+            <div style="flex:1;text-align:center;">
+              <div style="color:var(--color-gold);margin-bottom:6px;">{% render 'icon', name: 'refresh' %}</div>
+              <div style="font-size:0.78rem;color:var(--color-muted);">{{ block.settings.trust_3 }}</div>
+            </div>
+          </div>
+
+        {%- when 'collapsible' -%}
+          <div class="pdp__meta" {{ block.shopify_attributes }}>
+            <details>
+              <summary>{{ block.settings.heading }}</summary>
+              <div class="content">{{ block.settings.content }}</div>
+            </details>
+          </div>
+
+        {%- when 'share' -%}
+          <div style="margin-top:24px;display:flex;gap:12px;color:var(--color-muted);font-size:0.85rem;align-items:center;" {{ block.shopify_attributes }}>
+            <span>Share:</span>
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ shop.url }}{{ product.url }}" target="_blank" rel="noopener" aria-label="Share on Facebook">{% render 'icon', name: 'facebook' %}</a>
+            <a href="https://pinterest.com/pin/create/button/?url={{ shop.url }}{{ product.url }}&media={{ product.featured_image | image_url: width: 800 | prepend: 'https:' }}&description={{ product.title | url_encode }}" target="_blank" rel="noopener" aria-label="Pin on Pinterest">{% render 'icon', name: 'pinterest' %}</a>
+          </div>
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product",
+  "settings": [],
+  "blocks": [
+    { "type": "vendor", "name": "Vendor", "limit": 1 },
+    { "type": "title", "name": "Title", "limit": 1 },
+    { "type": "rating", "name": "Rating", "limit": 1, "settings": [{ "type": "text", "id": "review_count", "label": "Review count text", "default": "(214 reviews)" }] },
+    { "type": "price", "name": "Price", "limit": 1, "settings": [{ "type": "checkbox", "id": "show_installments", "label": "Show installments hint", "default": true }] },
+    { "type": "variant_picker", "name": "Variants + ATC", "limit": 1, "settings": [{ "type": "checkbox", "id": "show_dynamic_checkout", "label": "Show Shop Pay dynamic checkout", "default": true }] },
+    { "type": "description", "name": "Description", "limit": 1 },
+    {
+      "type": "trust", "name": "Trust icons", "limit": 1,
+      "settings": [
+        { "type": "text", "id": "trust_1", "label": "Trust 1", "default": "Free US shipping" },
+        { "type": "text", "id": "trust_2", "label": "Trust 2", "default": "10-year warranty" },
+        { "type": "text", "id": "trust_3", "label": "Trust 3", "default": "30-day returns" }
+      ]
+    },
+    {
+      "type": "collapsible", "name": "Collapsible row",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Dimensions & materials" },
+        { "type": "richtext", "id": "content", "label": "Content", "default": "<p>Solid oak frame, top-grain leather upholstery, hand-tied springs.</p>" }
+      ]
+    },
+    { "type": "share", "name": "Share", "limit": 1 }
+  ]
+}
+{% endschema %}

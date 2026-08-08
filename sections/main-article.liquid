@@ -1,0 +1,17 @@
+<article class="page-width section" style="max-width:760px;">
+  <header style="text-align:center;margin-bottom:40px;">
+    <div class="eyebrow">{{ article.published_at | date: '%B %-d, %Y' }}</div>
+    <h1>{{ article.title }}</h1>
+    {%- if article.author != blank -%}
+      <p style="color:var(--color-muted);">{{ 'blogs.article.by_author' | t: author: article.author }}</p>
+    {%- endif -%}
+  </header>
+  {%- if article.image -%}
+    <img src="{{ article.image | image_url: width: 1600 }}" alt="{{ article.image.alt | escape }}" style="width:100%;border-radius:var(--radius);margin-bottom:40px;">
+  {%- endif -%}
+  <div style="line-height:1.85;font-size:1.05rem;">{{ article.content }}</div>
+</article>
+
+{% schema %}
+{ "name": "Article", "settings": [] }
+{% endschema %}

@@ -1,0 +1,102 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="page-width">
+    <div class="footer-cols">
+      <div class="footer-col">
+        {%- if settings.logo != blank -%}
+          <img src="{{ settings.logo | image_url: width: 260 }}" alt="{{ shop.name }}" style="max-width:160px;margin-bottom:16px;">
+        {%- else -%}
+          <div style="font-family:var(--font-heading);font-size:1.6rem;letter-spacing:0.08em;margin-bottom:16px;">{{ shop.name }}</div>
+        {%- endif -%}
+        {%- if section.settings.tagline != blank -%}
+          <p style="color:var(--color-muted);font-size:0.9rem;max-width:32ch;">{{ section.settings.tagline }}</p>
+        {%- endif -%}
+      </div>
+
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'link_column' -%}
+          <div class="footer-col" {{ block.shopify_attributes }}>
+            <h4>{{ block.settings.heading }}</h4>
+            <ul>
+              {%- for link in linklists[block.settings.menu].links -%}
+                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- elsif block.type == 'newsletter' -%}
+          <div class="footer-col" {{ block.shopify_attributes }} style="grid-column: span 2;">
+            <h4>{{ block.settings.heading }}</h4>
+            {%- if block.settings.subtext != blank -%}
+              <p style="color:var(--color-muted);font-size:0.88rem;margin-bottom:16px;">{{ block.settings.subtext }}</p>
+            {%- endif -%}
+            {%- form 'customer', class: 'newsletter__form' -%}
+              <input type="hidden" name="contact[tags]" value="newsletter">
+              <input type="email" name="contact[email]" placeholder="{{ 'general.newsletter.email' | t }}" required aria-label="Email">
+              <button type="submit" class="btn">{{ 'general.newsletter.subscribe' | t }}</button>
+              {%- if form.posted_successfully? -%}
+                <p style="color:var(--color-gold);margin-top:12px;font-size:0.85rem;">{{ 'general.newsletter.success' | t }}</p>
+              {%- endif -%}
+            {%- endform -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    <div class="footer-bottom">
+      <div>© {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</div>
+      <div class="social-links">
+        {%- if settings.social_instagram != blank -%}<a href="{{ settings.social_instagram }}" target="_blank" rel="noopener" aria-label="Instagram">{% render 'icon', name: 'instagram' %}</a>{%- endif -%}
+        {%- if settings.social_facebook != blank -%}<a href="{{ settings.social_facebook }}" target="_blank" rel="noopener" aria-label="Facebook">{% render 'icon', name: 'facebook' %}</a>{%- endif -%}
+        {%- if settings.social_pinterest != blank -%}<a href="{{ settings.social_pinterest }}" target="_blank" rel="noopener" aria-label="Pinterest">{% render 'icon', name: 'pinterest' %}</a>{%- endif -%}
+        {%- if settings.social_tiktok != blank -%}<a href="{{ settings.social_tiktok }}" target="_blank" rel="noopener" aria-label="TikTok">{% render 'icon', name: 'tiktok' %}</a>{%- endif -%}
+        {%- if settings.social_youtube != blank -%}<a href="{{ settings.social_youtube }}" target="_blank" rel="noopener" aria-label="YouTube">{% render 'icon', name: 'youtube' %}</a>{%- endif -%}
+      </div>
+      {%- if section.settings.show_payment_icons and shop.enabled_payment_types.size > 0 -%}
+        <div style="display:flex;gap:6px;">
+          {%- for type in shop.enabled_payment_types -%}
+            {{ type | payment_type_svg_tag: class: 'payment-icon' }}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "textarea", "id": "tagline", "label": "Brand tagline", "default": "Crafted living for the modern American home." },
+    { "type": "checkbox", "id": "show_payment_icons", "label": "Show payment icons", "default": true }
+  ],
+  "blocks": [
+    {
+      "type": "link_column",
+      "name": "Link column",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Shop" },
+        { "type": "link_list", "id": "menu", "label": "Menu", "default": "footer" }
+      ]
+    },
+    {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Join the DreamHive list" },
+        { "type": "textarea", "id": "subtext", "label": "Subtext", "default": "Get 10% off your first order plus early access to new drops and design stories." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer",
+      "blocks": [
+        { "type": "link_column", "settings": { "heading": "Shop" } },
+        { "type": "link_column", "settings": { "heading": "Support" } },
+        { "type": "link_column", "settings": { "heading": "Company" } },
+        { "type": "newsletter" }
+      ]
+    }
+  ]
+}
+{% endschema %}

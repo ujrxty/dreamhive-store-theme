@@ -1,0 +1,98 @@
+{
+  "general": {
+    "accessibility": {
+      "skip_to_content": "Skip to content",
+      "close": "Close",
+      "menu": "Menu",
+      "next": "Next",
+      "previous": "Previous",
+      "loading": "Loading"
+    },
+    "search": {
+      "search": "Search",
+      "placeholder": "Search for products…"
+    },
+    "cart": {
+      "cart": "Cart",
+      "empty": "Your cart is empty",
+      "continue_shopping": "Continue shopping",
+      "checkout": "Checkout",
+      "subtotal": "Subtotal",
+      "remove": "Remove",
+      "quantity": "Quantity",
+      "shipping_at_checkout": "Shipping calculated at checkout"
+    },
+    "social": {
+      "share_on_facebook": "Share on Facebook",
+      "share_on_twitter": "Tweet on X",
+      "share_on_pinterest": "Pin on Pinterest"
+    },
+    "newsletter": {
+      "email": "Email address",
+      "subscribe": "Subscribe",
+      "success": "Thanks for subscribing."
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "404": {
+      "title": "Page not found",
+      "subtext": "The link you followed may be broken, or the page has been moved.",
+      "link": "Back to home"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to cart",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable",
+      "on_sale": "Sale",
+      "from_price_html": "From {{ price }}",
+      "quantity": "Quantity",
+      "view_details": "View details",
+      "sku": "SKU",
+      "vendor": "Brand",
+      "description": "Description",
+      "specifications": "Specifications",
+      "shipping": "Shipping & delivery",
+      "returns": "Returns"
+    },
+    "facets": {
+      "filter_and_sort": "Filter & sort",
+      "sort_by": "Sort by",
+      "clear": "Clear all",
+      "apply": "Apply"
+    }
+  },
+  "customer": {
+    "account": {
+      "title": "My account",
+      "orders": "Orders",
+      "log_out": "Log out"
+    },
+    "login": {
+      "title": "Sign in",
+      "email": "Email",
+      "password": "Password",
+      "sign_in": "Sign in",
+      "create_account": "Create account",
+      "forgot_password": "Forgot password?"
+    },
+    "register": {
+      "title": "Create account",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Create"
+    }
+  },
+  "blogs": {
+    "article": {
+      "read_more": "Read more",
+      "by_author": "By {{ author }}",
+      "posted_in": "Posted in"
+    }
+  }
+}

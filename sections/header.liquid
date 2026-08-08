@@ -1,0 +1,58 @@
+<header class="site-header" role="banner">
+  <div class="page-width header-inner">
+    <button class="mobile-nav-toggle" data-mobile-toggle aria-label="{{ 'general.accessibility.menu' | t }}">
+      {% render 'icon', name: 'menu' %}
+    </button>
+
+    <nav class="header-nav" aria-label="Primary">
+      {%- for link in linklists[section.settings.menu].links -%}
+        <a href="{{ link.url }}"{% if link.active %} aria-current="page"{% endif %}>{{ link.title }}</a>
+      {%- endfor -%}
+    </nav>
+
+    <a href="{{ routes.root_url }}" class="header-logo" aria-label="{{ shop.name }}">
+      {%- if settings.logo != blank -%}
+        <img src="{{ settings.logo | image_url: width: 400 }}" alt="{{ shop.name }}" style="max-width: {{ settings.logo_width }}px;">
+      {%- else -%}
+        <span style="font-family: var(--font-heading); font-size: 1.6rem; letter-spacing: 0.08em;">{{ shop.name }}</span>
+      {%- endif -%}
+    </a>
+
+    <div class="header-actions">
+      <a href="{{ routes.search_url }}" aria-label="{{ 'general.search.search' | t }}">{% render 'icon', name: 'search' %}</a>
+      {%- if shop.customer_accounts_enabled -%}
+        <a href="{{ routes.account_url }}" aria-label="{{ 'customer.account.title' | t }}">{% render 'icon', name: 'user' %}</a>
+      {%- endif -%}
+      <button type="button" data-cart-open aria-label="{{ 'general.cart.cart' | t }}">
+        {% render 'icon', name: 'cart' %}
+        <span class="cart-count-badge" data-cart-count{% if cart.item_count == 0 %} hidden{% endif %}>{{ cart.item_count }}</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-drawer" data-mobile-drawer aria-hidden="true">
+  <div style="display:flex;justify-content:space-between;align-items:center;">
+    <span style="font-family:var(--font-heading);font-size:1.4rem;">{{ shop.name }}</span>
+    <button data-mobile-close aria-label="{{ 'general.accessibility.close' | t }}">{% render 'icon', name: 'close' %}</button>
+  </div>
+  <nav aria-label="Mobile">
+    {%- for link in linklists[section.settings.menu].links -%}
+      <a href="{{ link.url }}">{{ link.title }}</a>
+    {%- endfor -%}
+  </nav>
+</div>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}

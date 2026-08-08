@@ -1,0 +1,26 @@
+<section class="page-width section">
+  <header class="section-header">
+    <h1>{{ 'general.search.search' | t }}</h1>
+    <form action="{{ routes.search_url }}" method="get" role="search" style="max-width:520px;margin:24px auto 0;display:flex;gap:8px;">
+      <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" style="flex:1;padding:14px 18px;background:transparent;border:1px solid var(--color-border);color:var(--color-text);border-radius:var(--radius-btn);">
+      <button type="submit" class="btn">{{ 'general.search.search' | t }}</button>
+    </form>
+  </header>
+
+  {%- if search.performed -%}
+    <p style="color:var(--color-muted);text-align:center;margin-bottom:32px;">{{ search.results_count }} results for "{{ search.terms }}"</p>
+    {%- if search.results.size > 0 -%}
+      <div class="grid grid--4">
+        {%- for item in search.results -%}
+          {%- if item.object_type == 'product' -%}
+            {%- render 'product-card', product: item -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  {%- endif -%}
+</section>
+
+{% schema %}
+{ "name": "Search", "settings": [] }
+{% endschema %}

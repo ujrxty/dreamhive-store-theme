@@ -1,0 +1,21 @@
+{%- comment -%}
+  Render price for product or variant.
+  Params: product | variant | price
+{%- endcomment -%}
+
+{%- if variant -%}
+  {%- assign target = variant -%}
+{%- elsif product -%}
+  {%- assign target = product.selected_or_first_available_variant -%}
+{%- endif -%}
+
+{%- if target -%}
+  {%- if target.compare_at_price > target.price -%}
+    <s>{{ target.compare_at_price | money }}</s>
+    <span style="color:var(--color-gold);">{{ target.price | money }}</span>
+  {%- else -%}
+    <span>{{ target.price | money }}</span>
+  {%- endif -%}
+{%- elsif price -%}
+  {{ price | money }}
+{%- endif -%}

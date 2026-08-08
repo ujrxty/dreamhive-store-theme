@@ -1,0 +1,41 @@
+{
+  "current": {
+    "logo_width": 140,
+    "color_bg": "#0E0E10",
+    "color_surface": "#17171A",
+    "color_cream": "#F5EFE6",
+    "color_text": "#EDEAE3",
+    "color_text_dark": "#1A1A1C",
+    "color_muted": "#8A857C",
+    "color_gold": "#C9A24A",
+    "color_gold_light": "#E5C88A",
+    "color_silver": "#C0C0C0",
+    "color_btn_bg": "#C9A24A",
+    "color_btn_text": "#0E0E10",
+    "color_btn_bg_hover": "#E5C88A",
+    "color_border": "#2A2A2E",
+    "font_heading": "cormorant_garamond_n4",
+    "font_heading_scale": 110,
+    "font_body": "inter_n4",
+    "font_body_scale": 100,
+    "eyebrow_style": "uppercase",
+    "page_width": 1440,
+    "section_padding_y": 96,
+    "corner_radius": 4,
+    "button_radius": 2,
+    "card_image_ratio": "portrait",
+    "card_show_vendor": false,
+    "card_show_second_image": true,
+    "card_show_quick_add": true,
+    "card_show_sale_badge": true,
+    "cart_type": "drawer",
+    "cart_show_note": false,
+    "cart_free_shipping_message": "Free US shipping on orders over $199."
+  },
+  "presets": {
+    "DreamHive": {
+      "color_bg": "#0E0E10",
+      "color_gold": "#C9A24A"
+    }
+  }
+}

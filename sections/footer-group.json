@@ -1,0 +1,17 @@
+{
+  "type": "footer",
+  "name": "Footer group",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "col1": { "type": "link_column", "settings": { "heading": "Shop", "menu": "footer" } },
+        "col2": { "type": "link_column", "settings": { "heading": "Support", "menu": "footer" } },
+        "col3": { "type": "link_column", "settings": { "heading": "Company", "menu": "footer" } },
+        "news": { "type": "newsletter" }
+      },
+      "block_order": ["col1", "col2", "col3", "news"]
+    }
+  },
+  "order": ["footer"]
+}

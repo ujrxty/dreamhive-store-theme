@@ -1,0 +1,11 @@
+<section class="page-width section">
+  <h1>Addresses</h1>
+  {%- paginate customer.addresses by 6 -%}
+    {%- for address in customer.addresses -%}
+      <div style="border:1px solid var(--color-border);padding:20px;margin-bottom:16px;border-radius:var(--radius);">
+        {{ address | format_address }}
+      </div>
+    {%- endfor -%}
+  {%- endpaginate -%}
+  <p><a href="{{ routes.account_url }}" class="btn btn--outline">Back to account</a></p>
+</section>

@@ -1,0 +1,64 @@
+<section class="section {% if section.settings.background == 'surface' %}section--surface{% elsif section.settings.background == 'light' %}section--light{% endif %}">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <header class="section-header">
+        {%- if section.settings.eyebrow != blank -%}<div class="eyebrow">{{ section.settings.eyebrow }}</div>{%- endif -%}
+        <h2>{{ section.settings.heading }}</h2>
+      </header>
+    {%- endif -%}
+    <div class="grid grid--{{ section.blocks.size | at_most: 3 }}" style="align-items:start;">
+      {%- for block in section.blocks -%}
+        <div class="testimonial" {{ block.shopify_attributes }}>
+          <div class="testimonial__stars" aria-label="{{ block.settings.stars }} stars">
+            {%- for i in (1..block.settings.stars) -%}★{%- endfor -%}
+          </div>
+          <blockquote class="testimonial__quote">“{{ block.settings.quote }}”</blockquote>
+          <cite class="testimonial__author">— {{ block.settings.author }}</cite>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Loved by 12,000+ homes" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What our customers say" },
+    {
+      "type": "select",
+      "id": "background",
+      "label": "Background",
+      "options": [
+        { "value": "default", "label": "Default" },
+        { "value": "surface", "label": "Surface" },
+        { "value": "light", "label": "Light" }
+      ],
+      "default": "surface"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        { "type": "range", "id": "stars", "label": "Stars", "min": 1, "max": 5, "step": 1, "default": 5 },
+        { "type": "textarea", "id": "quote", "label": "Quote", "default": "The quality is unreal — it looks and feels like something twice the price. Delivery was smooth and the team assembled everything." },
+        { "type": "text", "id": "author", "label": "Author", "default": "Sarah M., Austin, TX" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        { "type": "testimonial" },
+        { "type": "testimonial", "settings": { "quote": "The sofa is our new favorite spot in the house. My kids won't leave it alone.", "author": "James L., Brooklyn, NY" } },
+        { "type": "testimonial", "settings": { "quote": "Beautiful craftsmanship. You can tell these are built to last generations.", "author": "Priya D., San Francisco, CA" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

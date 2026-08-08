@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="{{ settings.color_bg }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
+    {%- unless settings.font_heading == blank -%}
+      {%- assign heading_font = settings.font_heading -%}
+      {%- assign body_font = settings.font_body -%}
+      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+      {{ heading_font | font_face: font_display: 'swap' }}
+      {{ body_font | font_face: font_display: 'swap' }}
+      {{ body_font | font_modify: 'weight', 'bold' | font_face: font_display: 'swap' }}
+    {%- endunless -%}
+
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {% render 'meta-tags' %}
+
+    <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'theme.js' | asset_url }}" defer></script>
+
+    {%- style -%}
+      :root {
+        --color-bg: {{ settings.color_bg }};
+        --color-surface: {{ settings.color_surface }};
+        --color-cream: {{ settings.color_cream }};
+        --color-text: {{ settings.color_text }};
+        --color-text-dark: {{ settings.color_text_dark }};
+        --color-muted: {{ settings.color_muted }};
+        --color-gold: {{ settings.color_gold }};
+        --color-gold-light: {{ settings.color_gold_light }};
+        --color-silver: {{ settings.color_silver }};
+        --color-btn-bg: {{ settings.color_btn_bg }};
+        --color-btn-text: {{ settings.color_btn_text }};
+        --color-btn-bg-hover: {{ settings.color_btn_bg_hover }};
+        --color-border: {{ settings.color_border }};
+
+        --font-heading: {{ settings.font_heading.family }}, {{ settings.font_heading.fallback_families }};
+        --font-body: {{ settings.font_body.family }}, {{ settings.font_body.fallback_families }};
+        --font-heading-scale: {{ settings.font_heading_scale | divided_by: 100.0 }};
+        --font-body-scale: {{ settings.font_body_scale | divided_by: 100.0 }};
+
+        --page-width: {{ settings.page_width }}px;
+        --section-py: {{ settings.section_padding_y }}px;
+        --radius: {{ settings.corner_radius }}px;
+        --radius-btn: {{ settings.button_radius }}px;
+      }
+    {%- endstyle -%}
+
+    {{ content_for_header }}
+  </head>
+
+  <body class="template-{{ template | replace: '.', '-' | handle }}">
+    <a class="skip-to-content" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+
+    {% sections 'header-group' %}
+
+    <main id="MainContent" role="main">
+      {{ content_for_layout }}
+    </main>
+
+    {% sections 'footer-group' %}
+
+    {% if settings.cart_type == 'drawer' %}
+      {% render 'cart-drawer' %}
+    {% endif %}
+
+    <div id="ToastRoot" aria-live="polite" aria-atomic="true"></div>
+  </body>
+</html>

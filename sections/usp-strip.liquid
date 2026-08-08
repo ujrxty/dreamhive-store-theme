@@ -1,0 +1,68 @@
+<section class="{% if section.settings.background == 'surface' %}section--surface{% elsif section.settings.background == 'light' %}section--light{% endif %}">
+  <div class="page-width">
+    <ul class="usp" style="list-style:none;margin:0;padding-top:40px;padding-bottom:40px;">
+      {%- for block in section.blocks -%}
+        <li class="usp__item" {{ block.shopify_attributes }}>
+          <span class="usp__icon">{% render 'icon', name: block.settings.icon %}</span>
+          <div>
+            <div class="usp__title">{{ block.settings.title }}</div>
+            <p class="usp__text">{{ block.settings.text }}</p>
+          </div>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "USP strip",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "select",
+      "id": "background",
+      "label": "Background",
+      "options": [
+        { "value": "default", "label": "Default (dark)" },
+        { "value": "surface", "label": "Surface" },
+        { "value": "light", "label": "Light" }
+      ],
+      "default": "default"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "USP",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "truck", "label": "Truck" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "refresh", "label": "Refresh" },
+            { "value": "credit-card", "label": "Credit card" }
+          ],
+          "default": "truck"
+        },
+        { "type": "text", "id": "title", "label": "Title", "default": "Free US shipping" },
+        { "type": "text", "id": "text", "label": "Text", "default": "On orders over $199" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "USP strip",
+      "blocks": [
+        { "type": "item", "settings": { "icon": "truck", "title": "Free US shipping", "text": "On orders over $199" } },
+        { "type": "item", "settings": { "icon": "shield", "title": "10-year warranty", "text": "On every frame and finish" } },
+        { "type": "item", "settings": { "icon": "refresh", "title": "30-day returns", "text": "Hassle-free, at-home pickup" } },
+        { "type": "item", "settings": { "icon": "credit-card", "title": "Financing available", "text": "0% APR with Shop Pay" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

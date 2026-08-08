@@ -1,0 +1,26 @@
+<section class="page-width section">
+  <h1>Order {{ order.name }}</h1>
+  <p style="color:var(--color-muted);">Placed {{ order.created_at | date: '%B %-d, %Y' }}</p>
+  <table style="width:100%;margin-top:32px;border-collapse:collapse;">
+    <thead>
+      <tr style="text-align:left;border-bottom:1px solid var(--color-border);">
+        <th style="padding:12px 0;font-weight:500;">Product</th><th style="font-weight:500;">Qty</th><th style="font-weight:500;text-align:right;">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%- for line in order.line_items -%}
+        <tr style="border-bottom:1px solid var(--color-border);">
+          <td style="padding:16px 0;">{{ line.title }}</td>
+          <td>{{ line.quantity }}</td>
+          <td style="text-align:right;">{{ line.final_line_price | money }}</td>
+        </tr>
+      {%- endfor -%}
+    </tbody>
+  </table>
+  <div style="text-align:right;margin-top:24px;">
+    <div>Subtotal: {{ order.subtotal_price | money }}</div>
+    <div>Shipping: {{ order.shipping_price | money }}</div>
+    <div>Tax: {{ order.tax_price | money }}</div>
+    <div style="font-size:1.3rem;margin-top:8px;">Total: <strong>{{ order.total_price | money }}</strong></div>
+  </div>
+</section>

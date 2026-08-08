@@ -1,0 +1,43 @@
+<section class="page-width section">
+  <h1 style="margin-bottom:32px;">{{ 'general.cart.cart' | t }}</h1>
+  {%- if cart.item_count == 0 -%}
+    <div style="text-align:center;padding:60px 0;">
+      <p style="color:var(--color-muted);margin-bottom:24px;">{{ 'general.cart.empty' | t }}</p>
+      <a href="/collections/all" class="btn">{{ 'general.cart.continue_shopping' | t }}</a>
+    </div>
+  {%- else -%}
+    <form action="/cart" method="post">
+      {%- for item in cart.items -%}
+        <div style="display:grid;grid-template-columns:120px 1fr auto;gap:20px;padding:20px 0;border-top:1px solid var(--color-border);">
+          <a href="{{ item.url }}"><img src="{{ item.image | image_url: width: 240 }}" alt="{{ item.title | escape }}" style="width:120px;aspect-ratio:4/5;object-fit:cover;border-radius:var(--radius);"></a>
+          <div>
+            <a href="{{ item.url }}" style="font-family:var(--font-heading);font-size:1.2rem;">{{ item.product.title }}</a>
+            {%- unless item.variant.title contains 'Default' -%}
+              <div style="color:var(--color-muted);font-size:0.88rem;margin-top:4px;">{{ item.variant.title }}</div>
+            {%- endunless -%}
+            <div style="margin-top:12px;">{{ item.final_price | money }}</div>
+            <div style="margin-top:12px;">
+              <input type="number" name="updates[{{ item.key }}]" value="{{ item.quantity }}" min="0" style="width:70px;background:transparent;border:1px solid var(--color-border);color:var(--color-text);padding:6px 10px;border-radius:var(--radius-btn);">
+              <a href="/cart/change?line={{ forloop.index }}&quantity=0" style="margin-left:12px;color:var(--color-muted);font-size:0.85rem;">Remove</a>
+            </div>
+          </div>
+          <div style="text-align:right;">{{ item.final_line_price | money }}</div>
+        </div>
+      {%- endfor -%}
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:24px 0;border-top:1px solid var(--color-border);margin-top:24px;">
+        <div>
+          <button type="submit" name="update" class="btn btn--outline">Update</button>
+        </div>
+        <div style="text-align:right;">
+          <div style="color:var(--color-muted);font-size:0.85rem;margin-bottom:8px;">{{ 'general.cart.shipping_at_checkout' | t }}</div>
+          <div style="font-size:1.4rem;margin-bottom:16px;">{{ 'general.cart.subtotal' | t }}: <strong>{{ cart.total_price | money }}</strong></div>
+          <button type="submit" name="checkout" class="btn">{{ 'general.cart.checkout' | t }}</button>
+        </div>
+      </div>
+    </form>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{ "name": "Cart", "settings": [] }
+{% endschema %}

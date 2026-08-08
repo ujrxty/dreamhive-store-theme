@@ -1,0 +1,55 @@
+<section class="section {% if section.settings.background == 'surface' %}section--surface{% elsif section.settings.background == 'light' %}section--light{% endif %}">
+  <div class="page-width">
+    <header class="section-header">
+      {%- if section.settings.eyebrow != blank -%}<div class="eyebrow">{{ section.settings.eyebrow }}</div>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2>{{ section.settings.heading }}</h2>{%- endif -%}
+      {%- if section.settings.subheading != blank -%}<p>{{ section.settings.subheading }}</p>{%- endif -%}
+    </header>
+
+    {%- assign coll = collections[section.settings.collection] -%}
+    {%- if coll.products.size > 0 -%}
+      <div class="grid grid--{{ section.settings.columns }}">
+        {%- for product in coll.products limit: section.settings.product_limit -%}
+          {%- render 'product-card', product: product -%}
+        {%- endfor -%}
+      </div>
+      {%- if section.settings.show_view_all and coll.url -%}
+        <div class="text-center" style="margin-top:48px;">
+          <a href="{{ coll.url }}" class="btn btn--outline">{{ section.settings.view_all_text }}</a>
+        </div>
+      {%- endif -%}
+    {%- else -%}
+      <div class="text-center" style="padding:40px;color:var(--color-muted);">
+        <p>Select a collection in the theme editor to display products.</p>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured collection",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Best sellers" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Loved by the DreamHive community" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading" },
+    { "type": "collection", "id": "collection", "label": "Collection" },
+    { "type": "range", "id": "product_limit", "label": "Products to show", "min": 2, "max": 12, "step": 1, "default": 8 },
+    { "type": "range", "id": "columns", "label": "Columns", "min": 2, "max": 4, "step": 1, "default": 4 },
+    {
+      "type": "select",
+      "id": "background",
+      "label": "Background",
+      "options": [
+        { "value": "default", "label": "Default" },
+        { "value": "surface", "label": "Surface" },
+        { "value": "light", "label": "Light" }
+      ],
+      "default": "default"
+    },
+    { "type": "checkbox", "id": "show_view_all", "label": "Show 'View all' button", "default": true },
+    { "type": "text", "id": "view_all_text", "label": "View all button text", "default": "View all" }
+  ],
+  "presets": [{ "name": "Featured collection" }]
+}
+{% endschema %}

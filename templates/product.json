@@ -1,0 +1,32 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": { "type": "vendor" },
+        "title": { "type": "title" },
+        "rating": { "type": "rating", "settings": { "review_count": "(214 reviews)" } },
+        "price": { "type": "price", "settings": { "show_installments": true } },
+        "variants": { "type": "variant_picker", "settings": { "show_dynamic_checkout": true } },
+        "description": { "type": "description" },
+        "trust": { "type": "trust", "settings": { "trust_1": "Free US shipping", "trust_2": "10-year warranty", "trust_3": "30-day returns" } },
+        "dimensions": { "type": "collapsible", "settings": { "heading": "Dimensions & materials", "content": "<p>Full dimensions and material specs shown here. Editable per product via metafields or per-section content.</p>" } },
+        "shipping": { "type": "collapsible", "settings": { "heading": "Shipping & delivery", "content": "<p>Free white-glove delivery on orders over $999. Standard delivery in 5–10 business days.</p>" } },
+        "returns": { "type": "collapsible", "settings": { "heading": "Returns", "content": "<p>30-day hassle-free returns. We arrange at-home pickup.</p>" } },
+        "share": { "type": "share" }
+      },
+      "block_order": ["vendor", "title", "rating", "price", "variants", "description", "trust", "dimensions", "shipping", "returns", "share"]
+    },
+    "related": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "You may also love",
+        "heading": "Complete the look",
+        "columns": 4,
+        "product_limit": 4,
+        "background": "surface"
+      }
+    }
+  },
+  "order": ["main", "related"]
+}

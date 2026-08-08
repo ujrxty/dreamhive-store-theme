@@ -1,0 +1,120 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "New collection",
+        "heading": "Sanctuary for modern living",
+        "subheading": "Heirloom-quality furniture, designed for the way you live now. Free white-glove delivery on orders over $999.",
+        "button_1_text": "Shop the collection",
+        "button_1_link": "/collections/all",
+        "button_2_text": "Explore lookbook",
+        "text_align": "center",
+        "min_height": 90,
+        "overlay_top": 25,
+        "overlay_bottom": 55
+      }
+    },
+    "usp": {
+      "type": "usp-strip",
+      "blocks": {
+        "b1": { "type": "item", "settings": { "icon": "truck", "title": "Free US shipping", "text": "On orders over $199" } },
+        "b2": { "type": "item", "settings": { "icon": "shield", "title": "10-year warranty", "text": "On every frame & finish" } },
+        "b3": { "type": "item", "settings": { "icon": "refresh", "title": "30-day returns", "text": "Hassle-free, at-home pickup" } },
+        "b4": { "type": "item", "settings": { "icon": "credit-card", "title": "0% financing", "text": "With Shop Pay Installments" } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4"]
+    },
+    "categories": {
+      "type": "category-tiles",
+      "settings": {
+        "eyebrow": "Shop by room",
+        "heading": "Made for every corner of home",
+        "columns": 3
+      },
+      "blocks": {
+        "t1": { "type": "tile", "settings": { "label": "Living room" } },
+        "t2": { "type": "tile", "settings": { "label": "Bedroom" } },
+        "t3": { "type": "tile", "settings": { "label": "Dining" } }
+      },
+      "block_order": ["t1", "t2", "t3"]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Best sellers",
+        "heading": "Loved by the DreamHive community",
+        "columns": 4,
+        "product_limit": 8
+      }
+    },
+    "editorial": {
+      "type": "editorial-banner",
+      "settings": {
+        "image_position": "left",
+        "eyebrow": "Craftsmanship",
+        "heading": "Built to be lived in for a lifetime",
+        "body": "<p>Solid hardwood frames, hand-finished by furniture-makers with decades of experience. Every DreamHive piece is quality-checked before it leaves our workshop.</p>",
+        "button_text": "Our story",
+        "button_link": "/pages/about"
+      }
+    },
+    "press": {
+      "type": "press-strip",
+      "blocks": {
+        "p1": { "type": "press", "settings": { "name": "Architectural Digest" } },
+        "p2": { "type": "press", "settings": { "name": "Dwell" } },
+        "p3": { "type": "press", "settings": { "name": "Elle Decor" } },
+        "p4": { "type": "press", "settings": { "name": "Apartment Therapy" } },
+        "p5": { "type": "press", "settings": { "name": "House Beautiful" } }
+      },
+      "block_order": ["p1", "p2", "p3", "p4", "p5"]
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "r1": { "type": "testimonial", "settings": { "stars": 5, "quote": "The quality is unreal — it looks and feels like something twice the price. Delivery was smooth and the team assembled everything.", "author": "Sarah M., Austin, TX" } },
+        "r2": { "type": "testimonial", "settings": { "stars": 5, "quote": "Our sofa is the new favorite spot in the house. My kids won't leave it alone.", "author": "James L., Brooklyn, NY" } },
+        "r3": { "type": "testimonial", "settings": { "stars": 5, "quote": "Beautiful craftsmanship. You can tell these are built to last generations.", "author": "Priya D., San Francisco, CA" } }
+      },
+      "block_order": ["r1", "r2", "r3"]
+    },
+    "banner": {
+      "type": "image-banner",
+      "settings": {
+        "eyebrow": "Free service",
+        "heading": "Design your dream space with us",
+        "text": "Book a complimentary consultation with a DreamHive design advisor.",
+        "button_text": "Book a consultation",
+        "button_link": "/pages/contact",
+        "height": 480,
+        "overlay": 45
+      }
+    },
+    "lookbook": {
+      "type": "lookbook",
+      "settings": {
+        "eyebrow": "@dreamhive",
+        "heading": "Tag us in your space",
+        "columns": 4
+      },
+      "blocks": {
+        "l1": { "type": "photo" },
+        "l2": { "type": "photo" },
+        "l3": { "type": "photo" },
+        "l4": { "type": "photo" }
+      },
+      "block_order": ["l1", "l2", "l3", "l4"]
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Stay inspired",
+        "heading": "Join the DreamHive list",
+        "subheading": "10% off your first order plus early access to new drops.",
+        "button_text": "Subscribe"
+      }
+    }
+  },
+  "order": ["hero", "usp", "categories", "featured", "editorial", "press", "testimonials", "banner", "lookbook", "newsletter"]
+}
