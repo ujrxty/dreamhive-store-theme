@@ -196,8 +196,8 @@
         "n4": {
           "type": "feature",
           "settings": {
-            "title": "Spring",
-            "description": "A Mattress made with viscoelastic polyurethane foam that uses your body heat and weight to soften and mold precisely to your shape. Returns to normal shape once your off it."
+            "title": "Box Spring",
+            "description": "A rectangular bed base made of a wooden or metal frame packed with metal coil springs and covered in cloth. It sits under a mattress to absorb shock, add bounce, lift the bed to a comfortable height, and improve airflow."
           }
         }
       },
@@ -267,9 +267,9 @@
         "fallback_asset": "sleep-consult.jpg",
         "height": 620,
         "overlay": 55,
-        "eyebrow": "100 night sleep trial",
-        "heading": "Try it in your home for 100 nights.",
-        "text": "If it is not the best sleep of your life, we will pick it up and refund you in full. No restocking fees, no headaches.",
+        "eyebrow": "Try with free shipping and cash on delivery",
+        "heading": "Elevate your Bedroom with Our Beds",
+        "text": "Cash on delivery and full refund available",
         "button_text": "Shop mattresses",
         "button_link": "/collections/all",
         "button2_text": "How the trial works",
