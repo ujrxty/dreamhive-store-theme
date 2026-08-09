@@ -24,7 +24,7 @@
         "subheading": "Comfort Elegance and luxury \nFree delivery on first order\nCash on delivery",
         "text_align": "center",
         "layout": "standard",
-        "button_1_text": "Shop mattresses",
+        "button_1_text": "Mattresses",
         "button_1_link": "shopify://collections/mattresses",
         "button_2_text": "Bed  Frames",
         "button_2_link": "",
@@ -81,14 +81,14 @@
         "m6"
       ],
       "settings": {
-        "speed": 55,
+        "speed": 20,
         "reverse": false
       }
     },
     "statement": {
       "type": "big-statement",
       "settings": {
-        "eyebrow": "Our philosophy",
+        "eyebrow": "Our GOAL",
         "text": "<p>Sleep is not a luxury. It is the <em>foundation</em> of every good day. We built DreamHive to give you that foundation, night after night.</p>",
         "button_text": "",
         "button_link": "",
