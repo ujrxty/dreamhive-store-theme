@@ -168,7 +168,7 @@
         "n1": {
           "type": "feature",
           "settings": {
-            "title": "Cooling gel-infused memory foam",
+            "title": "Memory Foam",
             "description": "Draws heat away from your body so you stay cool through the night, even on the warmest evenings."
           }
         },
@@ -202,7 +202,7 @@
       ],
       "settings": {
         "eyebrow": "Built for real sleep",
-        "heading": "What is inside matters most.",
+        "heading": "Top products",
         "background": "default"
       }
     },

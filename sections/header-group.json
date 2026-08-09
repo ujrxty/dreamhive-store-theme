@@ -14,39 +14,31 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "message_GAxJPg": {
+        "message_r6z9cc": {
           "type": "message",
           "settings": {
-            "text": "Free US shipping on orders over $300 · 30-day returns",
+            "text": "All sizes available",
             "link": ""
           }
         },
-        "message_hAcpqM": {
+        "message_j3g3wd": {
           "type": "message",
           "settings": {
-            "text": "Free US shipping on orders over $199 · 30-day returns",
-            "link": ""
-          }
-        },
-        "message_LUAbeF": {
-          "type": "message",
-          "settings": {
-            "text": "Free US shipping on orders over $199 · 30-day returns",
+            "text": "CASH ON DELIVERY",
             "link": ""
           }
         },
         "b1": {
           "type": "message",
           "settings": {
-            "text": "Free US shipping on orders over $199 · 30-day returns",
+            "text": "Free US shipping on orders over $300",
             "link": ""
           }
         }
       },
       "block_order": [
-        "message_GAxJPg",
-        "message_hAcpqM",
-        "message_LUAbeF",
+        "message_r6z9cc",
+        "message_j3g3wd",
         "b1"
       ],
       "settings": {}
