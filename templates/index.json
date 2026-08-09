@@ -186,13 +186,6 @@
             "description": "Kiln-dried oak and walnut, joined by hand with mortise-and-tenon construction."
           }
         },
-        "feature_CNVdgX": {
-          "type": "feature",
-          "settings": {
-            "title": "Solid hardwood frames",
-            "description": "Kiln-dried oak and walnut, joined by hand with mortise-and-tenon construction."
-          }
-        },
         "n3": {
           "type": "feature",
           "settings": {
@@ -212,7 +205,6 @@
         "n1",
         "n2",
         "feature_J6r9BR",
-        "feature_CNVdgX",
         "n3",
         "n4"
       ],
