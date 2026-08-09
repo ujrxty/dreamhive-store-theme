@@ -176,27 +176,43 @@
           "type": "feature",
           "settings": {
             "title": "Orthopeidic",
-            "description": "Over 1,000 pocketed coils absorb motion, so your partner turning over will not wake you."
+            "description": "This is a specialized bed designed to support the spine, joints, and body posture. Featuring firm support, even weight distribution, and pressure relief. It is built to keep the back in a neutral line and stop the body from sinking too much while you sleep."
+          }
+        },
+        "feature_J6r9BR": {
+          "type": "feature",
+          "settings": {
+            "title": "Solid hardwood frames",
+            "description": "Kiln-dried oak and walnut, joined by hand with mortise-and-tenon construction."
+          }
+        },
+        "feature_CNVdgX": {
+          "type": "feature",
+          "settings": {
+            "title": "Solid hardwood frames",
+            "description": "Kiln-dried oak and walnut, joined by hand with mortise-and-tenon construction."
           }
         },
         "n3": {
           "type": "feature",
           "settings": {
             "title": "Firm Foam",
-            "description": "Firmer support in the middle third of the mattress keeps your spine aligned in every position."
+            "description": ". Instead of sinking deep into the bed, your body rests evenly on top of the surface, which helps keep the spine properly aligned"
           }
         },
         "n4": {
           "type": "feature",
           "settings": {
             "title": "Spring",
-            "description": "Silky smooth, hypoallergenic, and moisture wicking. Removable and machine washable."
+            "description": "A Mattress made with viscoelastic polyurethane foam that uses your body heat and weight to soften and mold precisely to your shape. Returns to normal shape once your off it."
           }
         }
       },
       "block_order": [
         "n1",
         "n2",
+        "feature_J6r9BR",
+        "feature_CNVdgX",
         "n3",
         "n4"
       ],
