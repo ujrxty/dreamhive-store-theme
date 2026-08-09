@@ -199,6 +199,13 @@
             "title": "Box Spring",
             "description": "A rectangular bed base made of a wooden or metal frame packed with metal coil springs and covered in cloth. It sits under a mattress to absorb shock, add bounce, lift the bed to a comfortable height, and improve airflow."
           }
+        },
+        "feature_bXFJNf": {
+          "type": "feature",
+          "settings": {
+            "title": "Bed Frames",
+            "description": "Quality Bed frames available in a boatload of different designs."
+          }
         }
       },
       "block_order": [
@@ -206,7 +213,8 @@
         "n2",
         "feature_J6r9BR",
         "n3",
-        "n4"
+        "n4",
+        "feature_bXFJNf"
       ],
       "settings": {
         "eyebrow": "Built for real sleep",
