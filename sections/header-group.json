@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "header",
   "name": "Header group",
@@ -5,14 +14,42 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
+        "message_GAxJPg": {
+          "type": "message",
+          "settings": {
+            "text": "Free US shipping on orders over $300 · 30-day returns",
+            "link": ""
+          }
+        },
+        "message_hAcpqM": {
+          "type": "message",
+          "settings": {
+            "text": "Free US shipping on orders over $199 · 30-day returns",
+            "link": ""
+          }
+        },
+        "message_LUAbeF": {
+          "type": "message",
+          "settings": {
+            "text": "Free US shipping on orders over $199 · 30-day returns",
+            "link": ""
+          }
+        },
         "b1": {
           "type": "message",
           "settings": {
-            "text": "Free US shipping on orders over $199 · 30-day returns"
+            "text": "Free US shipping on orders over $199 · 30-day returns",
+            "link": ""
           }
         }
       },
-      "block_order": ["b1"]
+      "block_order": [
+        "message_GAxJPg",
+        "message_hAcpqM",
+        "message_LUAbeF",
+        "b1"
+      ],
+      "settings": {}
     },
     "header": {
       "type": "header",
@@ -21,5 +58,8 @@
       }
     }
   },
-  "order": ["announcement-bar", "header"]
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
 }

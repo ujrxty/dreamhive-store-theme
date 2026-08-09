@@ -1,99 +1,249 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "hero",
       "settings": {
         "use_default_video": true,
+        "video_url": "",
         "min_height": 95,
         "enable_parallax": true,
         "overlay_top": 30,
         "overlay_bottom": 60,
-        "eyebrow": "The DreamHive Mattress",
-        "heading": "Sleep, reimagined.",
+        "eyebrow": "THE HIVE OF YOUR DREAMS",
+        "heading": "SLEEP REIMAGINED",
         "heading_style": "display-xxl",
-        "subheading": "Engineered for deep, cooling, uninterrupted rest. Free shipping, 100-night trial, 10-year warranty.",
+        "subheading": "Comfort Elegance and luxury \nFree delivery on first order\nCash on delivery",
         "text_align": "center",
+        "layout": "standard",
         "button_1_text": "Shop mattresses",
-        "button_1_link": "/collections/all",
-        "button_2_text": "How it works",
+        "button_1_link": "shopify://collections/mattresses",
+        "button_2_text": "Bed  Frames",
+        "button_2_link": "",
         "show_scroll_hint": true,
         "scroll_hint_text": "Scroll"
       }
     },
     "marquee": {
       "type": "marquee",
-      "settings": { "speed": 55, "reverse": false },
       "blocks": {
-        "m1": { "type": "item", "settings": { "text": "100-night trial" } },
-        "m2": { "type": "item", "settings": { "text": "Free US shipping" } },
-        "m3": { "type": "item", "settings": { "text": "10-year warranty" } },
-        "m4": { "type": "item", "settings": { "text": "Ships in a box" } },
-        "m5": { "type": "item", "settings": { "text": "Cooling gel foam" } },
-        "m6": { "type": "item", "settings": { "text": "Made in the USA" } }
+        "m1": {
+          "type": "item",
+          "settings": {
+            "text": "100-night trial"
+          }
+        },
+        "m2": {
+          "type": "item",
+          "settings": {
+            "text": "Free US shipping"
+          }
+        },
+        "m3": {
+          "type": "item",
+          "settings": {
+            "text": "10-year warranty"
+          }
+        },
+        "m4": {
+          "type": "item",
+          "settings": {
+            "text": "Ships in a box"
+          }
+        },
+        "m5": {
+          "type": "item",
+          "settings": {
+            "text": "Cooling gel foam"
+          }
+        },
+        "m6": {
+          "type": "item",
+          "settings": {
+            "text": "Made in the USA"
+          }
+        }
       },
-      "block_order": ["m1", "m2", "m3", "m4", "m5", "m6"]
+      "block_order": [
+        "m1",
+        "m2",
+        "m3",
+        "m4",
+        "m5",
+        "m6"
+      ],
+      "settings": {
+        "speed": 55,
+        "reverse": false
+      }
     },
     "statement": {
       "type": "big-statement",
       "settings": {
         "eyebrow": "Our philosophy",
         "text": "<p>Sleep is not a luxury. It is the <em>foundation</em> of every good day. We built DreamHive to give you that foundation, night after night.</p>",
+        "button_text": "",
+        "button_link": "",
         "background": "default"
       }
     },
     "sizes": {
       "type": "size-grid",
+      "blocks": {
+        "s1": {
+          "type": "size",
+          "settings": {
+            "fallback_asset": "size-twin.jpg",
+            "name": "Twin",
+            "dimensions": "38 x 75 in",
+            "price": "From $795",
+            "link": "/collections/all"
+          }
+        },
+        "s2": {
+          "type": "size",
+          "settings": {
+            "fallback_asset": "size-queen.jpg",
+            "name": "Queen",
+            "dimensions": "60 x 80 in",
+            "price": "From $1,295",
+            "link": "/collections/all"
+          }
+        },
+        "s3": {
+          "type": "size",
+          "settings": {
+            "fallback_asset": "size-king.jpg",
+            "name": "King",
+            "dimensions": "76 x 80 in",
+            "price": "From $1,595",
+            "link": "/collections/all"
+          }
+        },
+        "s4": {
+          "type": "size",
+          "settings": {
+            "fallback_asset": "size-cal-king.jpg",
+            "name": "Cal King",
+            "dimensions": "72 x 84 in",
+            "price": "From $1,595",
+            "link": "/collections/all"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
       "settings": {
         "eyebrow": "Every size",
         "heading": "Fits your bed. And your budget.",
         "subheading": "From dorm room to primary suite. All sizes ship free and arrive at your door in a box.",
         "columns": 4
-      },
-      "blocks": {
-        "s1": { "type": "size", "settings": { "name": "Twin", "dimensions": "38 x 75 in", "price": "From $795", "fallback_asset": "size-twin.jpg", "link": "/collections/all" } },
-        "s2": { "type": "size", "settings": { "name": "Queen", "dimensions": "60 x 80 in", "price": "From $1,295", "fallback_asset": "size-queen.jpg", "link": "/collections/all" } },
-        "s3": { "type": "size", "settings": { "name": "King", "dimensions": "76 x 80 in", "price": "From $1,595", "fallback_asset": "size-king.jpg", "link": "/collections/all" } },
-        "s4": { "type": "size", "settings": { "name": "Cal King", "dimensions": "72 x 84 in", "price": "From $1,595", "fallback_asset": "size-cal-king.jpg", "link": "/collections/all" } }
-      },
-      "block_order": ["s1", "s2", "s3", "s4"]
+      }
     },
     "carousel": {
       "type": "product-carousel",
       "settings": {
         "eyebrow": "Meet the range",
         "heading": "Four mattresses. One promise.",
+        "collection": "",
         "product_limit": 8,
         "background": "surface"
       }
     },
     "numbered": {
       "type": "numbered-features",
+      "blocks": {
+        "n1": {
+          "type": "feature",
+          "settings": {
+            "title": "Cooling gel-infused memory foam",
+            "description": "Draws heat away from your body so you stay cool through the night, even on the warmest evenings."
+          }
+        },
+        "n2": {
+          "type": "feature",
+          "settings": {
+            "title": "Individually wrapped coils",
+            "description": "Over 1,000 pocketed coils absorb motion, so your partner turning over will not wake you."
+          }
+        },
+        "n3": {
+          "type": "feature",
+          "settings": {
+            "title": "Zoned lumbar support",
+            "description": "Firmer support in the middle third of the mattress keeps your spine aligned in every position."
+          }
+        },
+        "n4": {
+          "type": "feature",
+          "settings": {
+            "title": "Breathable Tencel cover",
+            "description": "Silky smooth, hypoallergenic, and moisture wicking. Removable and machine washable."
+          }
+        }
+      },
+      "block_order": [
+        "n1",
+        "n2",
+        "n3",
+        "n4"
+      ],
       "settings": {
         "eyebrow": "Built for real sleep",
         "heading": "What is inside matters most.",
         "background": "default"
-      },
-      "blocks": {
-        "n1": { "type": "feature", "settings": { "title": "Cooling gel-infused memory foam", "description": "Draws heat away from your body so you stay cool through the night, even on the warmest evenings." } },
-        "n2": { "type": "feature", "settings": { "title": "Individually wrapped coils", "description": "Over 1,000 pocketed coils absorb motion, so your partner turning over will not wake you." } },
-        "n3": { "type": "feature", "settings": { "title": "Zoned lumbar support", "description": "Firmer support in the middle third of the mattress keeps your spine aligned in every position." } },
-        "n4": { "type": "feature", "settings": { "title": "Breathable Tencel cover", "description": "Silky smooth, hypoallergenic, and moisture wicking. Removable and machine washable." } }
-      },
-      "block_order": ["n1", "n2", "n3", "n4"]
+      }
     },
     "sticky-story": {
       "type": "sticky-story",
+      "blocks": {
+        "c1": {
+          "type": "chapter",
+          "settings": {
+            "fallback_asset": "mattress-craft.jpg",
+            "title": "The cover",
+            "body": "A breathable Tencel and organic cotton knit that stays cool to the touch, resists dust mites, and unzips for cleaning."
+          }
+        },
+        "c2": {
+          "type": "chapter",
+          "settings": {
+            "fallback_asset": "mattress-1.jpg",
+            "title": "The comfort layer",
+            "body": "Two inches of cooling gel memory foam that contours to your body and releases pressure at the shoulders and hips."
+          }
+        },
+        "c3": {
+          "type": "chapter",
+          "settings": {
+            "fallback_asset": "mattress-3.jpg",
+            "title": "The support core",
+            "body": "A base of pocketed coils, each moving independently. Zoned to give firmer support where your spine needs it most."
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3"
+      ],
       "settings": {
         "eyebrow": "How it is made",
         "heading": "Layer by considered layer.",
         "background": "surface"
-      },
-      "blocks": {
-        "c1": { "type": "chapter", "settings": { "title": "The cover", "body": "A breathable Tencel and organic cotton knit that stays cool to the touch, resists dust mites, and unzips for cleaning.", "fallback_asset": "mattress-craft.jpg" } },
-        "c2": { "type": "chapter", "settings": { "title": "The comfort layer", "body": "Two inches of cooling gel memory foam that contours to your body and releases pressure at the shoulders and hips.", "fallback_asset": "mattress-1.jpg" } },
-        "c3": { "type": "chapter", "settings": { "title": "The support core", "body": "A base of pocketed coils, each moving independently. Zoned to give firmer support where your spine needs it most.", "fallback_asset": "mattress-3.jpg" } }
-      },
-      "block_order": ["c1", "c2", "c3"]
+      }
     },
     "quote": {
       "type": "pull-quote",
@@ -107,6 +257,8 @@
       "type": "image-banner",
       "settings": {
         "fallback_asset": "sleep-consult.jpg",
+        "height": 620,
+        "overlay": 55,
         "eyebrow": "100 night sleep trial",
         "heading": "Try it in your home for 100 nights.",
         "text": "If it is not the best sleep of your life, we will pick it up and refund you in full. No restocking fees, no headaches.",
@@ -114,8 +266,6 @@
         "button_link": "/collections/all",
         "button2_text": "How the trial works",
         "button2_link": "/pages/trial",
-        "height": 620,
-        "overlay": 55,
         "text_align": "center",
         "show_badge": true,
         "badge_label": "Rated",
@@ -125,20 +275,62 @@
     },
     "lookbook": {
       "type": "lookbook",
+      "blocks": {
+        "l1": {
+          "type": "photo",
+          "settings": {
+            "fallback_asset": "mattress-1.jpg",
+            "size": "wide",
+            "handle": "@sarah.brooklyn",
+            "caption": "First morning on the Original. Never sleeping on anything else.",
+            "link": ""
+          }
+        },
+        "l2": {
+          "type": "photo",
+          "settings": {
+            "fallback_asset": "mattress-2.jpg",
+            "size": "default",
+            "handle": "@james.austin",
+            "caption": "8 hours, uninterrupted.",
+            "link": ""
+          }
+        },
+        "l3": {
+          "type": "photo",
+          "settings": {
+            "fallback_asset": "mattress-3.jpg",
+            "size": "default",
+            "handle": "@priya.sf",
+            "caption": "Best decision this year.",
+            "link": ""
+          }
+        },
+        "l4": {
+          "type": "photo",
+          "settings": {
+            "fallback_asset": "mattress-4.jpg",
+            "size": "wide",
+            "handle": "@casa.miller",
+            "caption": "Guest room upgrade complete.",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "l1",
+        "l2",
+        "l3",
+        "l4"
+      ],
       "settings": {
         "eyebrow": "#DreamHiveSleep",
         "heading": "The mornings you deserve.",
         "subheading": "Real customers, real bedrooms. Share yours with #DreamHiveSleep.",
         "cta_text": "Follow @dreamhive on Instagram",
-        "cta_link": "#"
-      },
-      "blocks": {
-        "l1": { "type": "photo", "settings": { "size": "wide", "handle": "@sarah.brooklyn", "caption": "First morning on the Original. Never sleeping on anything else.", "fallback_asset": "mattress-1.jpg" } },
-        "l2": { "type": "photo", "settings": { "size": "default", "handle": "@james.austin", "caption": "8 hours, uninterrupted.", "fallback_asset": "mattress-2.jpg" } },
-        "l3": { "type": "photo", "settings": { "size": "default", "handle": "@priya.sf", "caption": "Best decision this year.", "fallback_asset": "mattress-3.jpg" } },
-        "l4": { "type": "photo", "settings": { "size": "wide", "handle": "@casa.miller", "caption": "Guest room upgrade complete.", "fallback_asset": "mattress-4.jpg" } }
-      },
-      "block_order": ["l1", "l2", "l3", "l4"]
+        "cta_link": "#",
+        "background": "default"
+      }
     },
     "newsletter": {
       "type": "newsletter",
@@ -146,9 +338,22 @@
         "eyebrow": "Sleep better tonight",
         "heading": "Join the DreamHive list.",
         "subheading": "$100 off your first mattress, plus tips from our sleep science team.",
-        "button_text": "Subscribe"
+        "button_text": "Subscribe",
+        "background": "surface"
       }
     }
   },
-  "order": ["hero", "marquee", "statement", "sizes", "carousel", "numbered", "sticky-story", "quote", "banner", "lookbook", "newsletter"]
+  "order": [
+    "hero",
+    "marquee",
+    "statement",
+    "sizes",
+    "carousel",
+    "numbered",
+    "sticky-story",
+    "quote",
+    "banner",
+    "lookbook",
+    "newsletter"
+  ]
 }
