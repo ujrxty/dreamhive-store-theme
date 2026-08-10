@@ -25,9 +25,9 @@
         "text_align": "center",
         "layout": "standard",
         "button_1_text": "Mattresses",
-        "button_1_link": "shopify://collections/mattresses",
-        "button_2_text": "Bed  Frames",
-        "button_2_link": "",
+        "button_1_link": "/collections/all",
+        "button_2_text": "Bed Frames",
+        "button_2_link": "/collections/all",
         "show_scroll_hint": true,
         "scroll_hint_text": "Scroll"
       }
@@ -38,7 +38,7 @@
         "m1": {
           "type": "item",
           "settings": {
-            "text": "100-night trial"
+            "text": "Cash on delivery"
           }
         },
         "m2": {
@@ -88,10 +88,10 @@
     "statement": {
       "type": "big-statement",
       "settings": {
-        "eyebrow": "Our GOAL",
-        "text": "<p>Sleep is not a luxury. It is the <em>foundation</em> of every good day. We Aim to provide you with that necessity along with luxury.</p>",
-        "button_text": "shop",
-        "button_link": "",
+        "eyebrow": "Our goal",
+        "text": "<p>Sleep is not a luxury. It is the <em>foundation</em> of every good day. We aim to provide you with that necessity along with luxury.</p>",
+        "button_text": "Shop the range",
+        "button_link": "/collections/all",
         "background": "default"
       }
     },
@@ -293,13 +293,13 @@
         "fallback_asset": "sleep-consult.jpg",
         "height": 620,
         "overlay": 55,
-        "eyebrow": "Try with free shipping and cash on delivery",
-        "heading": "Elevate your Bedroom with Our Beds",
-        "text": "Cash on delivery and full refund available",
+        "eyebrow": "Free shipping · cash on delivery",
+        "heading": "Elevate your bedroom with our beds",
+        "text": "Cash on delivery and full refund available.",
         "button_text": "Shop mattresses",
         "button_link": "/collections/all",
-        "button2_text": "How the trial works",
-        "button2_link": "/pages/trial",
+        "button2_text": "Shop bed frames",
+        "button2_link": "/collections/all",
         "text_align": "center",
         "show_badge": true,
         "badge_label": "Rated",
@@ -317,7 +317,7 @@
             "size": "wide",
             "handle": "@sarah.brooklyn",
             "caption": "First morning on the Original. Never sleeping on anything else.",
-            "link": ""
+            "link": "/collections/all"
           }
         },
         "l2": {
@@ -327,7 +327,7 @@
             "size": "default",
             "handle": "@james.austin",
             "caption": "8 hours, uninterrupted.",
-            "link": ""
+            "link": "/collections/all"
           }
         },
         "l3": {
@@ -337,7 +337,7 @@
             "size": "default",
             "handle": "@priya.sf",
             "caption": "Best decision this year.",
-            "link": ""
+            "link": "/collections/all"
           }
         },
         "l4": {
@@ -347,7 +347,7 @@
             "size": "wide",
             "handle": "@casa.miller",
             "caption": "Guest room upgrade complete.",
-            "link": ""
+            "link": "/collections/all"
           }
         }
       },
@@ -362,7 +362,7 @@
         "heading": "Real Homes Quality Rest",
         "subheading": "Become a customer and a member of the Dream Hive community",
         "cta_text": "Follow @dreamhive on Instagram",
-        "cta_link": "#",
+        "cta_link": "/collections/all",
         "background": "default"
       }
     },

@@ -252,3 +252,64 @@ video, iframe { max-width: 100%; }
 
 /* ---- Avoid horizontal scroll ---- */
 html, body { overflow-x: hidden; }
+
+/* ---- Global mobile alignment pass ---- */
+@media (max-width: 749px) {
+  /* Section headers: ensure center-alignment where used */
+  .section-header { padding: 0 12px; }
+
+  /* Big statement + numbered-features + product-carousel + sticky-story headers */
+  .statement__text { padding: 0 12px; }
+
+  /* Numbered features on tiny screens */
+  .numbered { border-top: 1px solid var(--color-border); }
+  .numbered__item:first-child { border-top: 0; }
+
+  /* Product carousel: heading + nav row goes vertical */
+  [data-carousel] header {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+  [data-carousel] .carousel-nav { display: none; }
+
+  /* Size grid tiles: cleaner spacing */
+  .size-tile__media { margin-bottom: 12px; }
+  .size-tile__name { font-size: 1.2rem; }
+
+  /* Sticky-story replacement (story-rows) */
+  .story-rows { gap: 32px !important; }
+  .story-row__num { font-size: 0.9rem; }
+
+  /* Lookbook heading padding */
+  .lookbook-grid { padding: 0 4px; }
+
+  /* Newsletter form on mobile */
+  .newsletter { padding: 0 12px; }
+
+  /* Any h2 with display-* class in a section header should not overflow */
+  section h2.display-xl, section h2.display-xxl, section h2.story-heading {
+    word-break: break-word;
+    hyphens: auto;
+  }
+
+  /* Editorial banner CTAs stack + full width */
+  .banner-hero__ctas { flex-direction: column; align-items: stretch; padding: 0 16px; }
+  .banner-hero__ctas .btn { width: 100%; }
+
+  /* Hero content bottom padding so scroll hint doesn't collide with title */
+  .hero__content { padding-bottom: 60px; }
+
+  /* Cart drawer heading */
+  .cart-drawer__header h2 { font-size: 1.1rem; }
+}
+
+@media (max-width: 400px) {
+  .display-xxl { font-size: clamp(2rem, 13vw, 3.4rem) !important; }
+  .display-xl { font-size: clamp(1.8rem, 11vw, 3rem) !important; }
+  .hero__content .eyebrow--dot { font-size: 0.65rem; }
+  .btn { font-size: 0.72rem; padding: 12px 18px; }
+  .marquee__item { font-size: clamp(1.2rem, 8vw, 2rem); }
+  .size-tile__dim { font-size: 0.62rem; }
+  .story-row__title { font-size: clamp(1.3rem, 6vw, 1.8rem); }
+}

@@ -1,41 +1,105 @@
 <section class="section {% if section.settings.background == 'surface' %}section--surface{% elsif section.settings.background == 'light' %}section--light{% endif %}">
   <div class="page-width">
-    <header class="sticky-story-header" style="margin-bottom:48px;max-width:640px;">
-      {%- if section.settings.eyebrow != blank -%}<div class="eyebrow--dot" data-reveal>{{ section.settings.eyebrow }}</div>{%- endif -%}
-      {%- if section.settings.heading != blank -%}<h2 class="display-xl" data-split="words" style="margin-top:16px;">{{ section.settings.heading }}</h2>{%- endif -%}
+    <header style="text-align:center;max-width:640px;margin:0 auto 64px;">
+      {%- if section.settings.eyebrow != blank -%}<div class="eyebrow--dot" style="justify-content:center;" data-reveal>{{ section.settings.eyebrow }}</div>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="story-heading" data-split="words" style="margin-top:16px;">{{ section.settings.heading }}</h2>{%- endif -%}
+      {%- if section.settings.subheading != blank -%}<p data-reveal data-reveal-delay="1" style="color:var(--color-muted);margin-top:16px;font-size:1.05rem;">{{ section.settings.subheading }}</p>{%- endif -%}
     </header>
 
-    <div class="sticky-scroll" data-sticky-scroll>
-      <div class="sticky-scroll__media" data-sticky-media>
-        {%- for block in section.blocks -%}
-          {%- assign img = block.settings.image -%}
-          {%- if img != blank -%}
-            <img src="{{ img | image_url: width: 1200 }}" alt="{{ block.settings.title | escape }}" loading="lazy" width="1200" height="1500">
-          {%- elsif block.settings.fallback_asset != blank -%}
-            <img src="{{ block.settings.fallback_asset | asset_url }}" alt="{{ block.settings.title | escape }}" loading="lazy" width="1200" height="1500">
-          {%- endif -%}
-        {%- endfor -%}
-      </div>
-      <div class="sticky-scroll__content">
-        {%- for block in section.blocks -%}
-          <div data-sticky-step="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
-            <div class="eyebrow--dot" style="margin-bottom:16px;">Chapter {{ forloop.index | prepend: '0' | slice: -2, 2 }}</div>
-            <h3>{{ block.settings.title }}</h3>
-            <p>{{ block.settings.body }}</p>
+    <div class="story-rows">
+      {%- for block in section.blocks -%}
+        <article class="story-row" data-reveal {{ block.shopify_attributes }}>
+          <div class="story-row__media">
+            {%- if block.settings.image != blank -%}
+              <img src="{{ block.settings.image | image_url: width: 1200 }}" alt="{{ block.settings.title | escape }}" loading="lazy" width="1200" height="900">
+            {%- elsif block.settings.fallback_asset != blank -%}
+              <img src="{{ block.settings.fallback_asset | asset_url }}" alt="{{ block.settings.title | escape }}" loading="lazy" width="1200" height="900">
+            {%- endif -%}
           </div>
-        {%- endfor -%}
-      </div>
+          <div class="story-row__content">
+            <div class="story-row__num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</div>
+            <h3 class="story-row__title">{{ block.settings.title }}</h3>
+            <p class="story-row__body">{{ block.settings.body }}</p>
+          </div>
+        </article>
+      {%- endfor -%}
     </div>
   </div>
 </section>
 
+<style>
+  .story-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 5vw, 3.6rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0;
+    font-weight: 400;
+  }
+  .story-rows { display: flex; flex-direction: column; gap: clamp(48px, 8vw, 120px); }
+  .story-row {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: clamp(32px, 6vw, 80px);
+    align-items: center;
+  }
+  .story-row:nth-child(even) { direction: rtl; }
+  .story-row:nth-child(even) > * { direction: ltr; }
+  .story-row__media {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: var(--color-surface);
+  }
+  .story-row__media img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 900ms cubic-bezier(0.22,1,0.36,1);
+  }
+  .story-row:hover .story-row__media img { transform: scale(1.03); }
+  .story-row__content { max-width: 460px; }
+  .story-row__num {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--color-gold);
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+  .story-row__title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+    line-height: 1.15;
+    margin: 0 0 20px;
+  }
+  .story-row__body {
+    color: var(--color-muted);
+    font-size: 1.02rem;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  @media (max-width: 749px) {
+    .story-row {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      direction: ltr !important;
+    }
+    .story-row > * { direction: ltr; }
+    .story-row__media { aspect-ratio: 4/3; }
+    .story-row__content { max-width: 100%; padding: 0 4px; }
+    .story-row__num { margin-bottom: 12px; }
+    .story-row__title { margin-bottom: 12px; }
+    .story-rows { gap: 40px; }
+  }
+</style>
+
 {% schema %}
 {
-  "name": "Sticky story",
+  "name": "Story rows",
   "max_blocks": 6,
   "settings": [
-    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "How it's made" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "From workshop to your living room" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "How it is made" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Layer by considered layer." },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Every DreamHive mattress is built in the USA from four purposeful layers, each with a job to do." },
     {
       "type": "select", "id": "background", "label": "Background",
       "options": [{ "value": "default", "label": "Default" }, { "value": "surface", "label": "Surface" }, { "value": "light", "label": "Light" }],
@@ -48,19 +112,19 @@
       "name": "Chapter",
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Image" },
-        { "type": "text", "id": "fallback_asset", "label": "Fallback asset", "default": "editorial-craft.jpg" },
-        { "type": "text", "id": "title", "label": "Title", "default": "Kiln-dried in Vermont" },
-        { "type": "textarea", "id": "body", "label": "Body", "default": "Every frame begins with Appalachian hardwood, kiln-dried for eight weeks to stabilize the grain before a saw ever touches it." }
+        { "type": "text", "id": "fallback_asset", "label": "Fallback asset", "default": "mattress-craft.jpg" },
+        { "type": "text", "id": "title", "label": "Title", "default": "The cover" },
+        { "type": "textarea", "id": "body", "label": "Body", "default": "A breathable Tencel and organic cotton knit that stays cool to the touch, resists dust mites, and unzips for cleaning." }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Sticky story",
+      "name": "Story rows",
       "blocks": [
-        { "type": "chapter", "settings": { "title": "Kiln-dried in Vermont", "body": "Every frame begins with Appalachian hardwood, kiln-dried for eight weeks to stabilize the grain before a saw ever touches it.", "fallback_asset": "editorial-craft.jpg" } },
-        { "type": "chapter", "settings": { "title": "Joined by hand", "body": "Mortise-and-tenon joinery the same technique that's held furniture together for 500 years. No staples, no shortcuts.", "fallback_asset": "cat-bedroom.jpg" } },
-        { "type": "chapter", "settings": { "title": "Finished with care", "body": "Hand-rubbed oils and waxes bring out the wood's natural depth. No plastic sheens, no VOC lacquers.", "fallback_asset": "cat-dining.jpg" } }
+        { "type": "chapter", "settings": { "title": "The cover", "body": "A breathable Tencel and organic cotton knit that stays cool to the touch, resists dust mites, and unzips for cleaning.", "fallback_asset": "mattress-craft.jpg" } },
+        { "type": "chapter", "settings": { "title": "The comfort layer", "body": "Two inches of cooling gel memory foam that contours to your body and releases pressure at the shoulders and hips.", "fallback_asset": "mattress-1.jpg" } },
+        { "type": "chapter", "settings": { "title": "The support core", "body": "A base of pocketed coils, each moving independently. Zoned to give firmer support where your spine needs it most.", "fallback_asset": "mattress-3.jpg" } }
       ]
     }
   ]
