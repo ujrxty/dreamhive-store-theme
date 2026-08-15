@@ -104,7 +104,7 @@
             "fallback_asset": "size-twin.jpg",
             "name": "Twin",
             "dimensions": "38 x 75 in",
-            "price": "From $795",
+            "price": "From $270",
             "link": "/collections/all"
           }
         },
@@ -114,7 +114,7 @@
             "fallback_asset": "size-queen.jpg",
             "name": "Queen",
             "dimensions": "60 x 80 in",
-            "price": "From $1,295",
+            "price": "From $200",
             "link": "/collections/all"
           }
         },
@@ -124,7 +124,7 @@
             "fallback_asset": "size-king.jpg",
             "name": "King",
             "dimensions": "76 x 80 in",
-            "price": "From $1,595",
+            "price": "From $300",
             "link": "/collections/all"
           }
         },
@@ -134,7 +134,7 @@
             "fallback_asset": "size-cal-king.jpg",
             "name": "Cal King",
             "dimensions": "72 x 84 in",
-            "price": "From $1,595",
+            "price": "From $350",
             "link": "/collections/all"
           }
         }
@@ -276,6 +276,7 @@
       "settings": {
         "eyebrow": "THE DIFFERENCE",
         "heading": "What makes us stand out",
+        "subheading": "Every DreamHive mattress is built in the USA from four purposeful layers, each with a job to do.",
         "background": "surface"
       }
     },
