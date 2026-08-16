@@ -246,6 +246,7 @@
         "chapter_QAMjtr": {
           "type": "chapter",
           "settings": {
+            "image": "shopify://shop_images/rn-image_picker_lib_temp_070c6478-b4ef-401b-a04d-348835fcd5b3.jpg",
             "fallback_asset": "editorial-craft.jpg",
             "title": "TRUST",
             "body": "We offer Cash on delivery option and go as far as to support the method of payment. It is well understood that online scams are more or less of a source of income for a lot of people so in an attempt to build trust among our clients, we offer a percentage off on all cash on delivery Orders"
