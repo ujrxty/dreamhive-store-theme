@@ -41,18 +41,6 @@
             "text": "Cash on delivery"
           }
         },
-        "m2": {
-          "type": "item",
-          "settings": {
-            "text": "Free US shipping"
-          }
-        },
-        "m3": {
-          "type": "item",
-          "settings": {
-            "text": "10-year warranty"
-          }
-        },
         "m4": {
           "type": "item",
           "settings": {
@@ -74,8 +62,6 @@
       },
       "block_order": [
         "m1",
-        "m2",
-        "m3",
         "m4",
         "m5",
         "m6"
