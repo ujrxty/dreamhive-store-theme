@@ -9,6 +9,8 @@
 
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- elsif settings.logo != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.logo | image_url: width: 32, height: 32 }}">
     {%- endif -%}
 
     {%- unless settings.font_heading == blank -%}
