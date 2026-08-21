@@ -25,7 +25,7 @@
         "text_align": "center",
         "layout": "standard",
         "button_1_text": "Mattresses",
-        "button_1_link": "shopify://collections/memory-foam",
+        "button_1_link": "shopify://collections/all-mattresses",
         "button_2_text": "Bed Frames",
         "button_2_link": "shopify://collections/bed-frames",
         "show_scroll_hint": true,
