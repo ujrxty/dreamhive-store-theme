@@ -110,9 +110,9 @@
           "type": "size",
           "settings": {
             "fallback_asset": "size-king.jpg",
-            "name": "King",
-            "dimensions": "76 x 80 in",
-            "price": "From $300",
+            "name": "Full Bed Set",
+            "dimensions": "Mattress + Bed + Box Spring",
+            "price": "Was $1700 Now $1400",
             "link": "/collections/all"
           }
         },
