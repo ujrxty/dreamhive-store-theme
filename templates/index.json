@@ -98,6 +98,7 @@
         "s2": {
           "type": "size",
           "settings": {
+            "image": "shopify://shop_images/WhatsAppImage2026-08-21at2.36.18AM.jpg",
             "fallback_asset": "size-queen.jpg",
             "name": "Box Spring",
             "dimensions": "Box Spring Wooden Base",
