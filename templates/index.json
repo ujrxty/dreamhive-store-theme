@@ -87,11 +87,12 @@
         "s1": {
           "type": "size",
           "settings": {
+            "image": "shopify://shop_images/rn-image_picker_lib_temp_250689c0-10ef-4eac-8461-552ae2953331.jpg",
             "fallback_asset": "size-twin.jpg",
-            "name": "Twin",
-            "dimensions": "38 x 75 in",
-            "price": "From $270",
-            "link": "/collections/all"
+            "name": "LED light Beds",
+            "dimensions": "Wooden base and embraided head",
+            "price": "Starting From $350",
+            "link": "shopify://products/led-light-bed-frame"
           }
         },
         "s2": {
