@@ -99,10 +99,10 @@
           "type": "size",
           "settings": {
             "fallback_asset": "size-queen.jpg",
-            "name": "Queen",
-            "dimensions": "60 x 80 in",
-            "price": "From $200",
-            "link": "/collections/all"
+            "name": "Box Spring",
+            "dimensions": "Box Spring Wooden Base",
+            "price": "From $130",
+            "link": "shopify://products/box-spring"
           }
         },
         "s3": {
