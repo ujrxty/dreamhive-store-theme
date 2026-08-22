@@ -119,11 +119,12 @@
         "s4": {
           "type": "size",
           "settings": {
+            "image": "shopify://shop_images/WhatsApp_Image_2026-08-10_at_12.00.12_AM.jpg",
             "fallback_asset": "size-cal-king.jpg",
-            "name": "Cal King",
-            "dimensions": "72 x 84 in",
-            "price": "From $350",
-            "link": "/collections/all"
+            "name": "Orthopedic Mattresss",
+            "dimensions": "Perfect Fix for Arthritis patients",
+            "price": "From $430",
+            "link": "shopify://collections/orthopedic"
           }
         }
       },
